@@ -1,0 +1,6 @@
+[submodule "nvboard"]
+	path = other_tests/nvboard
+	url = https://github.com/NJU-ProjectN/nvboard.git
+[submodule "other_tests/nvboard"]
+	path = other_tests/nvboard
+	url = https://github.com/NJU-ProjectN/nvboard.git
