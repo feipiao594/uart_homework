@@ -5,6 +5,8 @@
     "string_view": "cpp",
     "span": "cpp",
     "stdlib.h": "c",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "atomic": "cpp",
+    "future": "cpp"
   }
 }
