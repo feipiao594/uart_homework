@@ -10,7 +10,7 @@ module sender(
 
     reg [9:0] shift_reg;  
     reg [3:0] bit_cnt;    
-    reg sending;          
+    reg sending;
 
     parameter IDLE  = 2'b00;
     parameter START = 2'b01;

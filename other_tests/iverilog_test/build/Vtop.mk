@@ -4,7 +4,7 @@
 # Execute this makefile from the object directory:
 #    make -f Vtop.mk
 
-default: /home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard_test/build/top
+default: Vtop
 
 ### Constants...
 # Perl executable (from $PERL)
@@ -35,30 +35,17 @@ VM_PREFIX = Vtop
 VM_MODPREFIX = Vtop
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
-	-MMD \
-	-O3 \
-	-I/usr/include/SDL2 \
-	-D_REENTRANT \
-	-I/home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard/usr/include \
-	-DTOP_NAME="Vtop" \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	/home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard/build/nvboard.a \
-	-L/usr/lib64 \
-	-lSDL2 \
-	-lSDL2_image \
-	-lSDL2_ttf \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
-	auto_bind \
 	main \
 
 # User .cpp directories (from .cpp's on Verilator command line)
 VM_USER_DIR = \
-	/home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard_test/build \
-	/home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard_test/csrc \
+	./csrc \
 
 
 ### Default rules...
@@ -70,13 +57,11 @@ include $(VERILATOR_ROOT)/include/verilated.mk
 ### Executable rules... (from --exe)
 VPATH += $(VM_USER_DIR)
 
-auto_bind.o: /home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard_test/build/auto_bind.cpp
-	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
-main.o: /home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard_test/csrc/main.cpp
+main.o: ./csrc/main.cpp
 	$(OBJCACHE) $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(OPT_FAST) -c -o $@ $<
 
 ### Link rules... (from --exe)
-/home/feipiao/Workplace/gitclone/uart_homework/other_tests/nvboard_test/build/top: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
+Vtop: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a $(VM_HIER_LIBS)
 	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
 
 
