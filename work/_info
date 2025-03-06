@@ -9,106 +9,199 @@ z2
 cModel Technology
 Z0 dC:/workplace/homework/uart_test
 T_opt
-!s110 1741057224
-Vka2FUKl9VO8GeGz5^l?0;0
-04 5 4 work add_t fast 0
-=1-58112240189a-67c66cc8-bf-32c8
-Z1 o-quiet -auto_acc_if_foreign -work work +acc
-Z2 tCvgOpt 0
+!s110 1741227285
+VaJHi_96;5nb_M?EaGYcjH0
+Z1 04 21 4 work baudrate_generator_tb fast 0
+=1-b48c9d8c0d5b-67c90515-a4-581c
+Z2 o-quiet -auto_acc_if_foreign -work work
+Z3 tCvgOpt 0
 n@_opt
-Z3 OL;O;10.5;63
+Z4 OL;O;10.5;63
 R0
 T_opt1
-!s110 1741078296
-V>n`fNGIDnNG_lHa6NKYiY2
-04 9 4 work tb_sender fast 0
-=1-58112240189a-67c6bf17-1db-4774
-R1
+!s110 1741226467
+VU]a4JdoJ;oT3XdMl]_V503
+04 9 4 work testbench fast 0
+=1-b48c9d8c0d5b-67c901e3-29b-3150
 R2
-n@_opt1
 R3
+n@_opt1
+R4
 R0
+T_opt2
+!s110 1741228098
+VgRKdK4lDUbIF042EL??Ic2
+R1
+=1-b48c9d8c0d5b-67c90842-f9-289c
+o-quiet -auto_acc_if_foreign -work work +acc
+R3
+n@_opt2
+R4
 vadd
-Z4 !s110 1741057219
+Z5 !s110 1741057219
 !i10b 1
 !s100 `S8RPc@KTCC_ck5J:dY[T0
 IZHUf@BhaKMI<J2WTVPB`81
-Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 dF:/GITCLONE/uart_homework
-Z7 w1741055657
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 dF:/GITCLONE/uart_homework
+Z8 w1741055657
 8F:/GITCLONE/uart_homework/source/add.v
 FF:/GITCLONE/uart_homework/source/add.v
 L0 1
-Z8 OL;L;10.5;63
+Z9 OL;L;10.5;63
 r1
 !s85 0
 31
-Z9 !s108 1741057219.000000
+Z10 !s108 1741057219.000000
 !s107 F:/GITCLONE/uart_homework/source/add.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/add.v|
 !i113 0
-Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
+Z11 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
 vadd_t
-R4
+R5
 !i10b 1
 !s100 n22aI:_>^32CY1eie@8352
 IN5af4UifW^XXENhTHNZ[O2
-R5
 R6
 R7
+R8
 8F:/GITCLONE/uart_homework/testbench/add_t.v
 FF:/GITCLONE/uart_homework/testbench/add_t.v
 L0 3
-R8
+R9
 r1
 !s85 0
 31
-R9
+R10
 !s107 F:/GITCLONE/uart_homework/testbench/add_t.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/add_t.v|
 !i113 0
-R10
-R2
-vsender
-Z11 !s110 1741079724
+R11
+R3
+vbaudrate_generator
+Z12 !s110 1741228085
 !i10b 1
-!s100 4l[M2]^1J6CM:PH0T@Cfd2
-INcNVgzze1FG4]]FPEi8563
-R5
+!s100 PEEDUA;b^6?D4jJ8=DSSQ3
+IF?`k0kG2hJ`FoRR9c@FX10
 R6
-w1741079492
-8F:/GITCLONE/uart_homework/source/sender.v
-FF:/GITCLONE/uart_homework/source/sender.v
+R7
+w1741224572
+8F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v
+FF:/GITCLONE/uart_homework/source/utils/baudrate_generator.v
 L0 1
-R8
+R9
 r1
 !s85 0
 31
-Z12 !s108 1741079724.000000
+Z13 !s108 1741228085.000000
+!s107 F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v|
+!i113 0
+R11
+R3
+vbaudrate_generator_tb
+R12
+!i10b 1
+!s100 <KWOM9FLV28CIJN<G_?^<3
+IQeO4CBC[MaAMf6zW?ZFD>2
+R6
+R7
+w1741228069
+Z14 8F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
+Z15 FF:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
+L0 3
+R9
+r1
+!s85 0
+31
+R13
+Z16 !s107 F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v|
+Z17 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v|
+!i113 0
+R11
+R3
+vfifo_buffer
+R12
+!i10b 1
+!s100 gRnEQZiz_klZc>?ba2TDR2
+IL8YhDf`9dEX1STzMZb4J93
+R6
+R7
+Z18 w1741154241
+8F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v
+FF:/GITCLONE/uart_homework/source/utils/fifo_buffer.v
+L0 1
+R9
+r1
+!s85 0
+31
+R13
+!s107 F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v|
+!i113 0
+R11
+R3
+vsender
+!s110 1741228084
+!i10b 1
+!s100 4l[M2]^1J6CM:PH0T@Cfd2
+INcNVgzze1FG4]]FPEi8563
+R6
+R7
+R18
+8F:/GITCLONE/uart_homework/source/sender.v
+FF:/GITCLONE/uart_homework/source/sender.v
+L0 1
+R9
+r1
+!s85 0
+31
+Z19 !s108 1741228084.000000
 !s107 F:/GITCLONE/uart_homework/source/sender.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/sender.v|
 !i113 0
-R10
-R2
-vtb_sender
 R11
+R3
+vtb_sender
+R12
 !i10b 1
 !s100 3IPf4^VCXY4P>o9M1LXk:1
 IXaiP]O369[=z>^oelSYcV0
-R5
 R6
+R7
 w1741079706
 8F:/GITCLONE/uart_homework/testbench/sender_tb.v
 FF:/GITCLONE/uart_homework/testbench/sender_tb.v
 L0 3
-R8
+R9
 r1
 !s85 0
 31
-R12
+R19
 !s107 F:/GITCLONE/uart_homework/testbench/sender_tb.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/sender_tb.v|
 !i113 0
-R10
-R2
+R11
+R3
+vtestbench
+!s110 1741226454
+!i10b 1
+!s100 2J;OQ4ZEFC^BCX6i?jQaJ0
+IF4VU_@F0I>=ae`DO_26[l2
+R6
+R7
+w1741224651
+R14
+R15
+L0 3
+R9
+r1
+!s85 0
+31
+!s108 1741226454.000000
+R16
+R17
+!i113 0
+R11
+R3

@@ -12,4 +12,25 @@ Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
 Top level modules:
 	sender
 
+} {} {}} ./source/utils/fifo_buffer.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v
+Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
+-- Compiling module fifo_buffer
+
+Top level modules:
+	fifo_buffer
+
+} {} {}} ./testbench/baudrate_generator_tb.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
+Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
+-- Compiling module baudrate_generator_tb
+
+Top level modules:
+	baudrate_generator_tb
+
+} {} {}} ./source/utils/baudrate_generator.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v
+Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
+-- Compiling module baudrate_generator
+
+Top level modules:
+	baudrate_generator
+
 } {} {}}

@@ -11,6 +11,8 @@ module fifo_buffer #(
     output wire full,      // FIFO 满信号
     output wire empty      // FIFO 空信号
 );
+    // 注意： 读写都是被动的，即读写使能信号是由外部控制的，而不是由FIFO自己控制的
+    // 用满和空通知其他组件读写，所以别的组件有主动权
 
     // **存储器**（双端口 RAM）
     reg [WIDTH-1:0] memory [0:DEPTH-1];
