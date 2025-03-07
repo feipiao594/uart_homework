@@ -1,5 +1,5 @@
 module parallel_to_serial #(
-    parameter P_WIDTH = 64,  // 并行输入数据位宽
+    parameter P_WIDTH = 24,  // 并行输入数据位宽
     parameter S_WIDTH = 8    // 串行输出数据位宽
 )(
     input wire clk,          // 时钟信号

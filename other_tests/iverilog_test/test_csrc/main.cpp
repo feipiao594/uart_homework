@@ -11,6 +11,7 @@
 #include <assert.h>
 
 #include <iostream>
+#include <queue>
 
 // Include common routines
 #include <verilated.h>
@@ -45,13 +46,13 @@ int main(int argc, char **argv, char **env)
 
     int clk = 0;
 
-    #include "sim_context.temp"
+#include "sim_context.temp"
 
     // Simulate until $finish
     while (!contextp->gotFinish())
     {
 
-        #include "sim_loop.temp"
+#include "sim_loop.temp"
 
         // 评估电路
         top->eval();
