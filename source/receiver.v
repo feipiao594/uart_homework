@@ -34,6 +34,7 @@ module receiver (
       rxBusy   <= 1'b0;
       rxDone   <= 1'b0;
       bit_cnt  <= 0;
+      out_data <= 8'b0;
     end else begin
       case (state)
         // **等待起始位**
