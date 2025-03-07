@@ -47,7 +47,6 @@ module receiver (
 
         // **检测起始位是否有效**
         START: begin
-          rxBusy  <= 1'b1;  // 开始接收
           if (rx == 1'b0) begin  // 确认起始位仍然为 0
             if (baud_tick) begin
               state <= DATA;  // 在波特率周期到来后，开始接收数据
@@ -59,6 +58,7 @@ module receiver (
 
         // **接收 8 位数据**
         DATA: begin
+          rxBusy  <= 1'b1;  // 开始接收
           if (baud_tick) begin
             shift_reg <= {shift_reg[8:0], rx};  // 左移并存入新位 最终数据格式为起始+8数据+终止
             bit_cnt   <= bit_cnt + 1;
