@@ -1,3 +1,4 @@
 *.bak
 other_tests/iverilog_test/build/*
 .vscode
+*.vcd
