@@ -13,6 +13,7 @@ module s_to_r;
     wire [7:0] out_data;
     wire rxBusy;
     wire rxDone;
+    wire right;
     wire rx;  // rx 是 receiver 模块的输入，它接收来自 sender 的数据
 
     // 实例化 sender 模块
@@ -35,7 +36,8 @@ module s_to_r;
         .rx(tx),  // receiver 接收来自 sender 的 tx 数据
         .out_data(out_data),
         .rxBusy(rxBusy),
-        .rxDone(rxDone)
+        .rxDone(rxDone),
+        .right(right)
     );
 
     // 50MHz 时钟
@@ -80,11 +82,5 @@ module s_to_r;
             #1000;           // 等待数据发送完成
         end
     endtask
-
-    // 监视信号变化
-    initial begin
-        $monitor("Time: %0t | tx: %b | rx: %b | out_data: %b | txDone: %b | rxDone: %b",
-                 $time, tx, rx, out_data, txDone, rxDone);
-    end
 
 endmodule

@@ -6,7 +6,7 @@ module parallel_to_serial #(
     input wire rst,          // 复位信号
     input wire load,         // 使能加载并行数据
     input reg [P_WIDTH-1:0] parallel_in, // 并行输入数据
-    output wire [S_WIDTH-1:0] serial_out, // 串行输出数据
+    output reg [S_WIDTH-1:0] serial_out, // 串行输出数据
     output reg valid,        // 并行数据有效信号
     output reg busy          // 正在输出串行数据信号
 );

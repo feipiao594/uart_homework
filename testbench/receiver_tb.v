@@ -8,6 +8,7 @@ module receiver_tb;
     wire [7:0] out_data;  // 并行输出数据
     wire rxBusy;  // 接收中标志
     wire rxDone;  // 数据接收完成标志
+    wire right;
 
     // 实例化 receiver
     receiver uut (
@@ -17,7 +18,8 @@ module receiver_tb;
         .rx(rx),
         .out_data(out_data),
         .rxBusy(rxBusy),
-        .rxDone(rxDone)
+        .rxDone(rxDone),
+        .right(right)
     );
 
     // 50MHz 时钟（20ns周期）
@@ -51,12 +53,6 @@ module receiver_tb;
 
         // 结束仿真
         $stop;
-    end
-
-    // 监视信号变化
-    initial begin
-        $monitor("Time: %0t | rx: %b | out_data: %b | rxBusy: %b | rxDone: %b", 
-                 $time, rx, out_data, rxBusy, rxDone);
     end
 
 endmodule

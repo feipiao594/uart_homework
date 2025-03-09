@@ -5,7 +5,8 @@ module receiver (
     input  wire       rx,        // 串行输入数据
     output reg  [7:0] out_data,  // 8 位并行输出数据
     output reg        rxBusy,    // 接收中标志
-    output reg        rxDone     // 数据接收完成标志
+    output reg        rxDone,    // 数据接收完成标志
+    output reg        right      //接收数据是否为正确数据
 );
 
   reg [9:0] shift_reg;  // 移位寄存器（包括起始位 + 8位数据 + 停止位）
@@ -35,14 +36,16 @@ module receiver (
       rxDone   <= 1'b0;
       bit_cnt  <= 0;
       out_data <= 8'b0;
+      right    <= 1'b0;  // 复位时数据无效
     end else begin
       case (state)
         // **等待起始位**
         IDLE: begin
-          rxDone <= 1'b0;
-          rxBusy <= 1'b0;
+          rxDone  <= 1'b0;
+          rxBusy  <= 1'b0;
           bit_cnt <= 0;
           state   <= START;
+          right   <= 1'b0;
         end
 
         // **检测起始位是否有效**
@@ -58,10 +61,12 @@ module receiver (
 
         // **接收 8 位数据**
         DATA: begin
-          rxBusy  <= 1'b1;  // 开始接收
+          rxBusy <= 1'b1;  // 开始接收
           if (baud_tick) begin
-            shift_reg <= {shift_reg[8:0], rx};  // 左移并存入新位 最终数据格式为起始+8数据+终止
-            bit_cnt   <= bit_cnt + 1;
+            shift_reg <= {
+              shift_reg[8:0], rx
+            };  // 左移并存入新位 最终数据格式为起始+8数据+终止
+            bit_cnt <= bit_cnt + 1;
             if (bit_cnt == 8) state <= STOP;  // 数据接收完成，进入停止位检测
           end
         end
@@ -70,8 +75,7 @@ module receiver (
         STOP: begin
           if (rx == 1'b1) begin  // 停止位必须是 1
             out_data <= shift_reg[8:1];  // 提取数据位
-          end else begin
-            out_data <= 8'b0;  // 停止位错误，输出默认值
+            right    <= (shift_reg[8:1] != 8'b0); // 只有非全0数据才认为有效
           end
           rxDone <= 1'b1;  // 接收完成信号
           rxBusy <= 1'b0;  // 释放忙信号
