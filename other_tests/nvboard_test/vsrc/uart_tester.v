@@ -8,7 +8,8 @@ module uart_tester(
     o_seg4,
     o_seg5,
     o_seg6,
-    o_seg7
+    o_seg7,
+    feipiao_0_sw
 );
   input [4:0] btn;
   input clk;
@@ -16,23 +17,28 @@ module uart_tester(
   wire [7:0] input_data;
   wire [15:0] ports;
   wire start;
+  input wire feipiao_0_sw;
 
-  sender_controller my_sender_controller (
+  wire my_communication_uart_tx;
+  wire my_communication_uart_rx;
+  wire my_communication_uart_seg;
+
+  communication_uart my_communication_uart (
+      .btn(btn),
+      .switch_sw(feipiao_0_sw),
       .clk(clk),
       .rst_n(1'b1),
-      .s3(btn[3]),
-      .s0(btn[0]),
-      .s4(btn[4]),
-      .s1(btn[1]),
-      .s2(btn[2]),
-      .send_data(input_data[7:0]),
-      .send_start(start)
-  );
-
-  lcd_double my_lcd_double (
-      .data(input_data[7:0]),
-      .enable(1'b1),
-      .ports(ports)
+      .seg(ports),
+      .tx(my_communication_uart_rx),
+      /* verilator lint_off PINCONNECTEMPTY */
+      .txDone(),
+      /* verilator lint_off PINCONNECTEMPTY */
+      .txBusy(),
+      .rx(my_communication_uart_tx),
+      /* verilator lint_off PINCONNECTEMPTY */
+      .rxDone(),
+      /* verilator lint_off PINCONNECTEMPTY */
+      .rxBusy()
   );
 
 

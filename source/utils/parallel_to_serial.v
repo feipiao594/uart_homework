@@ -11,7 +11,7 @@ module parallel_to_serial #(
     output reg busy          // 正在输出串行数据信号
 );
     localparam COUNT_MAX = P_WIDTH / S_WIDTH; // 需要多少次串行输出才能清空并行数据 
-    reg [$clog2(COUNT_MAX)-1:0] counter; // 计数器
+    reg [$clog2(COUNT_MAX)+1:0] counter; // 计数器
     reg [P_WIDTH-1:0] shift_reg;   // 移位寄存器
 
     always @(posedge clk) begin 
@@ -22,15 +22,17 @@ module parallel_to_serial #(
             busy <= 0;
         end
         else if (load && !busy) begin
+            // $display("[p2s input] indata: %x", parallel_in);
             shift_reg <= parallel_in;
             busy <= 1; // 开始输出
         end
         else if (busy) begin
             serial_out <= shift_reg[P_WIDTH-1:P_WIDTH-S_WIDTH];
+            // $display("[p2s output] outdata: %x ", shift_reg[P_WIDTH-1:P_WIDTH-S_WIDTH]);
             shift_reg <= { shift_reg[P_WIDTH-S_WIDTH-1:0], {S_WIDTH{1'b0}}};
             valid <= 1; // 数据有效
             counter <= counter + 1;
-            if (counter == {$clog2(COUNT_MAX){1'b1}})
+            if (counter == COUNT_MAX[$clog2(COUNT_MAX)+1:0]-1)
                 busy <= 0; // 数据已经输出完毕
         end
 

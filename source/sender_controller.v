@@ -3,9 +3,10 @@ module sender_controller (
     input wire rst_n,           // 复位信号（低有效）
     input wire s3,          // 选择数据存储位置
     input wire s0,
-    input wire s1,
-    input wire s4,          // 数据调整键
+    input wire s1,             // 数据调整键
+    input wire s4,          
     input wire s2,              // 确认发送
+    input wire btn_en,
     output reg [7:0] send_data, // 发送数据
     output reg [7:0] preview_data, // 预览数据
     output reg data_valid,      // 数据有效信号
@@ -60,28 +61,33 @@ module sender_controller (
             s4_prev      <= 1'b0;
             s1_prev      <= 1'b0;
             s2_prev      <= 1'b0;
-        end else begin
+        end else if(btn_en) begin
             // 上升沿检测逻辑
             if (s3 && !s3_prev) begin
                 data_index <= data_index + 1;
                 preview_data <= data_ram[data_index + 1];
+                // $strobe("[sender controller] switch to the %d number of byte", data_index);
             end
             else if (s0 && !s0_prev) begin
                 data_index <= data_index - 1;
                 preview_data <= data_ram[data_index + 1];
+                // $strobe("[sender controller] switch to the %d number of byte", data_index);
             end
 
             if (s4 && !s4_prev) begin
                 data_ram[data_index] <= data_ram[data_index] + 1;
+                // $strobe("[sender controller] the %d number of byte change to %x", data_index, data_ram[data_index]);
                 preview_data <= data_ram[data_index] + 1;
             end 
             else if (s1 && !s1_prev) begin
                 data_ram[data_index] <= data_ram[data_index] - 1;
+                // $strobe("[sender controller] the %d number of byte change to %x", data_index, data_ram[data_index]);
                 preview_data <= data_ram[data_index] - 1;
             end
 
-            if (s2 && !s2_prev)
+            if (s2 && !s2_prev) begin
                 send_signal <= 1'b1; // 触发发送信号
+            end
             else
                 send_signal <= 1'b0; // 仅触发一次，避免连续高电平影响
 

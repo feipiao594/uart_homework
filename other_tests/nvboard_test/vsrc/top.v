@@ -63,7 +63,8 @@ module top (
       .o_seg4(seg4),
       .o_seg5(seg5),
       .o_seg6(seg6),
-      .o_seg7(seg7)
+      .o_seg7(seg7),
+      .feipiao_0_sw(sw[0])
   );
 //   ps2_keyboard my_keyboard (
 //       .clk(clk),

@@ -24,7 +24,7 @@ module parser (
 
   reg valid;
   reg busy;
-  wire ptsEn;
+  reg ptsEn;
   parallel_to_serial #(
       .P_WIDTH(64),  // 并行输入数据位宽
       .S_WIDTH(8)    // 串行输出数据位宽
@@ -37,7 +37,7 @@ module parser (
       .valid      (valid),       // 并行数据有效信号
       .busy       (busy)         // 正在输出串行数据信号
   );
-
+  
   always @(posedge clk) begin
     if (!rst_n || !En) begin
       state    <= IDLE;
@@ -47,10 +47,10 @@ module parser (
       data_cnt <= 4'b0;
       outdata <= 8'b0;
       data_buf <= 64'b0;
-      pstEn <= 1'b0;
+      ptsEn <= 1'b0;
     end else begin
+      /* verilator lint_off CASEINCOMPLETE */
       case (state)
-
         IDLE: begin
           pBusy    <= 1'b0;
           pDone    <= 1'b0;
@@ -110,7 +110,6 @@ module parser (
           pDone <= 1'b1;
           state <= IDLE;
         end
-
       endcase
     end
   end

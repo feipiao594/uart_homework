@@ -22,13 +22,14 @@ module serial_to_parallel #(
             parallel_out <= 0;
             valid <= 0;
         end 
-        else if (load && counter != {{$clog2(COUNT_MAX){1'b1}}}) begin
+        else if (load && counter != COUNT_MAX) begin
             // 右移 S_WIDTH 位，并插入新数据
             shift_reg <= {shift_reg[P_WIDTH-2*S_WIDTH-1:0], serial_in};
             counter <= counter + 1;
         end
-        else if (counter == {{$clog2(COUNT_MAX){1'b1}}}) begin
+        else if (counter == COUNT_MAX) begin
             parallel_out <= {shift_reg, serial_in};
+            // $display("s2p output: ", {shift_reg, serial_in});
             shift_reg <= 0;
             valid <= 1; // 数据有效
             counter <= 0; // 重新计数

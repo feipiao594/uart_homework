@@ -21,6 +21,9 @@ VL_INLINE_OPT void Vtop___024root___ico_sequent__TOP__0(Vtop___024root* vlSelf) 
     (void)vlSelf;  // Prevent unused variable warning
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___ico_sequent__TOP__0\n"); );
+    // Init
+    CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data;
+    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data = 0;
     // Body
     vlSelf->VGA_CLK = vlSelf->clk;
     vlSelf->uart_tx = vlSelf->uart_rx;
@@ -30,6 +33,17 @@ VL_INLINE_OPT void Vtop___024root___ico_sequent__TOP__0(Vtop___024root* vlSelf) 
                                                    | (0x1fU 
                                                       & ((IData)(vlSelf->top__DOT__my_led__DOT__led) 
                                                          ^ (IData)(vlSelf->btn)))));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en 
+        = ((IData)(vlSelf->btn) & ((0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count)) 
+                                   & (IData)(vlSelf->sw)));
+    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data 
+        = ((1U & (IData)(vlSelf->sw)) ? (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data)
+            : (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data));
+    vlSelf->seg0 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display
+                             [(0xfU & (IData)(top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data))]));
+    vlSelf->seg1 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display
+                             [(0xfU & ((IData)(top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data) 
+                                       >> 4U))]));
 }
 
 void Vtop___024root___eval_triggers__ico(Vtop___024root* vlSelf);
@@ -80,6 +94,10 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     top__DOT__my_vga_ctrl__DOT__h_valid = 0;
     CData/*0:0*/ top__DOT__my_vga_ctrl__DOT__v_valid;
     top__DOT__my_vga_ctrl__DOT__v_valid = 0;
+    CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data;
+    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data = 0;
+    QData/*63:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf;
+    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf = 0;
     CData/*7:0*/ __Vdly__top__DOT__my_led__DOT__led;
     __Vdly__top__DOT__my_led__DOT__led = 0;
     IData/*31:0*/ __Vdly__top__DOT__my_led__DOT__count;
@@ -88,20 +106,124 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = 0;
     SData/*9:0*/ __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt;
     __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt = 0;
-    CData/*7:0*/ __Vdly__top__DOT__my_uart_tester__DOT__input_data;
-    __Vdly__top__DOT__my_uart_tester__DOT__input_data = 0;
+    CData/*2:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index = 0;
+    CData/*2:0*/ __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0;
+    __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 = 0;
+    CData/*7:0*/ __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0;
+    __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 = 0;
+    CData/*0:0*/ __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 = 0;
+    CData/*2:0*/ __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1;
+    __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 = 0;
+    CData/*7:0*/ __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1;
+    __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 = 0;
+    CData/*0:0*/ __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 = 0;
+    VlWide<4>/*103:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg;
+    VL_ZERO_W(104, __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg);
+    CData/*0:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy = 0;
+    CData/*5:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter = 0;
+    CData/*3:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count = 0;
+    CData/*3:0*/ __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0;
+    __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 = 0;
+    CData/*7:0*/ __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0;
+    __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 = 0;
+    CData/*0:0*/ __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 = 0;
+    CData/*1:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state = 0;
+    CData/*3:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt = 0;
+    SData/*9:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg = 0;
+    IData/*31:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter = 0;
+    CData/*1:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state = 0;
+    CData/*3:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt = 0;
+    IData/*31:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter = 0;
+    CData/*3:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count = 0;
+    CData/*3:0*/ __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0;
+    __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 = 0;
+    CData/*7:0*/ __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0;
+    __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 = 0;
+    CData/*0:0*/ __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 = 0;
+    CData/*7:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum = 0;
+    CData/*3:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt = 0;
+    CData/*2:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 0;
+    CData/*3:0*/ __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count = 0;
+    CData/*3:0*/ __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0;
+    __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 = 0;
+    CData/*7:0*/ __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0;
+    __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 = 0;
+    CData/*0:0*/ __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 = 0;
+    VlWide<3>/*95:0*/ __Vtemp_8;
     // Body
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter;
     __Vdly__top__DOT__my_led__DOT__count = vlSelf->top__DOT__my_led__DOT__count;
     __Vdly__top__DOT__my_led__DOT__led = vlSelf->top__DOT__my_led__DOT__led;
-    __Vdly__top__DOT__my_uart_tester__DOT__input_data 
-        = vlSelf->top__DOT__my_uart_tester__DOT__input_data;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U] 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U];
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U] 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U];
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U] 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U];
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U] 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U];
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 = 0U;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count;
     __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt = vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt;
     __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 = 0U;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 = 0U;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 = 0U;
+    __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 = 0U;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt;
+    __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state 
+        = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state;
     if (vlSelf->rst) {
         __Vdly__top__DOT__my_led__DOT__led = 1U;
         __Vdly__top__DOT__my_led__DOT__count = 0U;
-        __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = 1U;
-        __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt = 1U;
     } else {
         if ((0U == vlSelf->top__DOT__my_led__DOT__count)) {
             __Vdly__top__DOT__my_led__DOT__led = ((0xfeU 
@@ -117,64 +239,238 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
                                                  : 
                                                 ((IData)(1U) 
                                                  + vlSelf->top__DOT__my_led__DOT__count));
-        if ((0x320U == (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt))) {
-            __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt 
-                = ((0x20dU == (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt))
-                    ? 1U : (0x3ffU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt))));
-            __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = 1U;
-        } else {
-            __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt 
-                = (0x3ffU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt)));
+    }
+    if (VL_UNLIKELY(((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__wr_en) 
+                     & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__full))))) {
+        VL_WRITEF_NX("[buffer] write data: %3#\n",0,
+                     8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data);
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count)));
+        __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data;
+        __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 = 1U;
+        __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__write_pointer;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__write_pointer 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__write_pointer)));
+    }
+    if (VL_UNLIKELY((1U & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty))))) {
+        VL_WRITEF_NX("[buffer] read data: %x, count: %2#\n",0,
+                     8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory
+                     [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__read_pointer],
+                     4,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count);
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__read_pointer 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__read_pointer)));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count 
+            = (0xfU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count) 
+                       - (IData)(1U)));
+    }
+    if (vlSelf->rst) {
+        __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = 1U;
+        __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt = 1U;
+    } else if ((0x320U == (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt))) {
+        __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt = 
+            ((0x20dU == (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt))
+              ? 1U : (0x3ffU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt))));
+        __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = 1U;
+    } else {
+        __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt = 
+            (0x3ffU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt)));
+    }
+    if ((((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__wr_en) 
+          & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty))) 
+         & (~ ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__full) 
+               | (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty))))) {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count;
+    }
+    if ((1U & (~ (IData)(vlSelf->sw)))) {
+        if ((1U & (((IData)(vlSelf->btn) >> 3U) & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s3_prev))))) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index 
+                = (7U & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index)));
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data 
+                = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                [(7U & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index)))];
+        } else if ((1U & ((IData)(vlSelf->btn) & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s0_prev))))) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index 
+                = (7U & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index) 
+                         - (IData)(1U)));
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data 
+                = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                [(7U & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index)))];
+        }
+        if ((IData)((((IData)(vlSelf->btn) >> 4U) & 
+                     (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s4_prev))))) {
+            __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 
+                = (0xffU & ((IData)(1U) + vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                            [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index]));
+            __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 = 1U;
+            __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0 
+                = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index;
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data 
+                = (0xffU & ((IData)(1U) + vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                            [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index]));
+        } else if ((1U & (((IData)(vlSelf->btn) >> 1U) 
+                          & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s1_prev))))) {
+            __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 
+                = (0xffU & (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                            [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index] 
+                            - (IData)(1U)));
+            __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 = 1U;
+            __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1 
+                = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index;
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data 
+                = (0xffU & (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                            [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index] 
+                            - (IData)(1U)));
         }
     }
-    if ((IData)((((IData)(vlSelf->btn) >> 4U) & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s4_prev))))) {
-        __Vdly__top__DOT__my_uart_tester__DOT__input_data 
-            = ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__data_index)
-                ? ((0xfU & (IData)(__Vdly__top__DOT__my_uart_tester__DOT__input_data)) 
-                   | (0xf0U & (((IData)(1U) + ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__input_data) 
-                                               >> 4U)) 
-                               << 4U))) : ((0xf0U & (IData)(__Vdly__top__DOT__my_uart_tester__DOT__input_data)) 
-                                           | (0xfU 
-                                              & ((IData)(1U) 
-                                                 + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__input_data)))));
+    if (VL_UNLIKELY(((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid) 
+                     & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full))))) {
+        VL_WRITEF_NX("[buffer] write data: %3#\n",0,
+                     8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data);
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count)));
+        __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data;
+        __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 = 1U;
+        __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__write_pointer;
+        if ((0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count))) {
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data 
+                = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data;
+        }
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__write_pointer 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__write_pointer)));
     }
-    if ((1U & (((IData)(vlSelf->btn) >> 1U) & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s1_prev))))) {
-        __Vdly__top__DOT__my_uart_tester__DOT__input_data 
-            = ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__data_index)
-                ? ((0xfU & (IData)(__Vdly__top__DOT__my_uart_tester__DOT__input_data)) 
-                   | (0xf0U & ((((IData)(vlSelf->top__DOT__my_uart_tester__DOT__input_data) 
-                                 >> 4U) - (IData)(1U)) 
-                               << 4U))) : ((0xf0U & (IData)(__Vdly__top__DOT__my_uart_tester__DOT__input_data)) 
-                                           | (0xfU 
-                                              & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__input_data) 
-                                                 - (IData)(1U)))));
+    if (VL_UNLIKELY(((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en) 
+                     & (0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count))))) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory
+            [(0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__read_pointer)))];
+        VL_WRITEF_NX("[buffer] read data: %x, count: %2#\n",0,
+                     8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory
+                     [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__read_pointer],
+                     4,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count);
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__read_pointer 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__read_pointer)));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count 
+            = (0xfU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count) 
+                       - (IData)(1U)));
+    }
+    if ((((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid) 
+          & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en)) 
+         & (~ ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full) 
+               | (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count)))))) {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count;
+    }
+    if ((2U & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state))) {
+        if ((1U & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state))) {
+            if (VL_UNLIKELY(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_tick)) {
+                VL_WRITEF_NX("[uart sender] STOP, send: %1#\n",0,
+                             1,(1U & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg) 
+                                      >> 9U)));
+                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy = 0U;
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state = 0U;
+            }
+        } else if (VL_UNLIKELY(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_tick)) {
+            VL_WRITEF_NX("[uart sender] DATA, send: %1#\n",0,
+                         1,(1U & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg) 
+                                  >> 9U)));
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt 
+                = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt)));
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg 
+                = (0x3feU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg) 
+                             << 1U));
+            if ((7U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state = 3U;
+            }
+        }
+    } else if ((1U & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state))) {
+        if (VL_UNLIKELY(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_tick)) {
+            VL_WRITEF_NX("[uart sender] START, send: %1#\n",0,
+                         1,(1U & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg) 
+                                  >> 9U)));
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg 
+                = (0x3feU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg) 
+                             << 1U));
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state = 2U;
+        }
+    } else {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy = 0U;
+        if (VL_UNLIKELY((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count)))) {
+            VL_WRITEF_NX("[uart sender] IDLE, get data: %x\n",0,
+                         8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_data);
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg 
+                = (1U | ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_data) 
+                         << 1U));
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt = 0U;
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy = 1U;
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state = 1U;
+        }
     }
     vlSelf->top__DOT__my_led__DOT__count = __Vdly__top__DOT__my_led__DOT__count;
     vlSelf->top__DOT__my_led__DOT__led = __Vdly__top__DOT__my_led__DOT__led;
-    vlSelf->top__DOT__my_uart_tester__DOT__input_data 
-        = __Vdly__top__DOT__my_uart_tester__DOT__input_data;
+    if (__Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory[__Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0] 
+            = __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory__v0;
+    }
     vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt = __Vdly__top__DOT__my_vga_ctrl__DOT__x_cnt;
     vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt = __Vdly__top__DOT__my_vga_ctrl__DOT__y_cnt;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_index;
+    if (__Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory[__Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0] 
+            = __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory__v0;
+    }
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__state;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__bit_cnt;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg;
     vlSelf->ledr = (((IData)(vlSelf->sw) << 8U) | (
                                                    (0xe0U 
                                                     & (IData)(vlSelf->top__DOT__my_led__DOT__led)) 
                                                    | (0x1fU 
                                                       & ((IData)(vlSelf->top__DOT__my_led__DOT__led) 
                                                          ^ (IData)(vlSelf->btn)))));
-    vlSelf->seg0 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_lcd_double__DOT__low_lcd_single__DOT__hex_display
-                             [(0xfU & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__input_data))]));
-    vlSelf->seg1 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_lcd_double__DOT__high_lcd_single__DOT__hex_display
-                             [(0xfU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__input_data) 
-                                       >> 4U))]));
-    vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s4_prev 
-        = (1U & ((IData)(vlSelf->btn) >> 4U));
-    vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s1_prev 
-        = (1U & ((IData)(vlSelf->btn) >> 1U));
-    if ((1U & (((IData)(vlSelf->btn) >> 3U) & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s3_prev))))) {
-        vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__data_index = 1U;
-    }
-    if ((1U & ((IData)(vlSelf->btn) & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s0_prev))))) {
-        vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__data_index = 0U;
+    if ((2U & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state))) {
+        if ((1U & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state))) {
+            if (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart_tx) {
+                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data 
+                    = (0xffU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__shift_reg) 
+                                >> 1U));
+                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data_valid 
+                    = (0U != (0xffU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__shift_reg) 
+                                       >> 1U)));
+            }
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rxDone = 1U;
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state = 0U;
+        } else if (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_tick) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt 
+                = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt)));
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__shift_reg 
+                = ((0x3feU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__shift_reg) 
+                              << 1U)) | (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart_tx));
+            if ((8U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state = 3U;
+            }
+        }
+    } else if ((1U & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state))) {
+        if (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart_tx) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state = 0U;
+        } else if (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_tick) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state = 2U;
+        }
+    } else {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rxDone = 0U;
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt = 0U;
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state = 1U;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data_valid = 0U;
     }
     vlSelf->VGA_HSYNC = (0x60U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt));
     top__DOT__my_vga_ctrl__DOT__h_valid = ((0x90U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt)) 
@@ -184,6 +480,146 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     top__DOT__my_vga_ctrl__DOT__v_valid = ((0x23U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt)) 
                                            & (0x203U 
                                               >= (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt)));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full 
+        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count));
+    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data 
+        = ((1U & (IData)(vlSelf->sw)) ? (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data)
+            : (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data = 0U;
+    if ((1U & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__busy)))) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data = 0U;
+    }
+    if ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count))) {
+        if ((0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid = 0U;
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum = 0U;
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt = 0U;
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data = 0U;
+            top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf = 0ULL;
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 1U;
+        } else if ((1U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            if ((0x52U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+                    = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data;
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 2U;
+            }
+        } else if ((2U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            if ((0xeU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+                    = (0xffU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum) 
+                                + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data)));
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 3U;
+            }
+        } else if ((3U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            if ((1U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+                    = (0xffU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum) 
+                                + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data)));
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 4U;
+            }
+        } else if ((4U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+                = (0xffU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum) 
+                            + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data)));
+            top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf 
+                = (((~ (0xffULL << (0x3fU & VL_SHIFTL_III(6,32,32, 
+                                                          ((IData)(7U) 
+                                                           - (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt)), 3U)))) 
+                    & top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf) 
+                   | ((QData)((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data)) 
+                      << (0x3fU & VL_SHIFTL_III(6,32,32, 
+                                                ((IData)(7U) 
+                                                 - (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt)), 3U))));
+            if ((7U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 5U;
+            }
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt 
+                = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt)));
+        } else if ((5U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+                = (0xffU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum) 
+                            + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data)));
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 6U;
+        } else if ((6U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state))) {
+            if ((0x9aU != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data))) {
+                __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 0U;
+                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid = 0U;
+            }
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid = 1U;
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 0U;
+        }
+    } else {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 0U;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid = 0U;
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum = 0U;
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt = 0U;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data = 0U;
+        top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf = 0ULL;
+    }
+    if ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter 
+         == (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__baud_div 
+             - (IData)(1U)))) {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter = 0U;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_tick = 1U;
+    } else {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter 
+            = ((IData)(1U) + vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter);
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_tick = 0U;
+    }
+    if ((1U & (~ (IData)(vlSelf->sw)))) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s3_prev 
+            = (1U & ((IData)(vlSelf->btn) >> 3U));
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s0_prev 
+            = (1U & (IData)(vlSelf->btn));
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s4_prev 
+            = (1U & ((IData)(vlSelf->btn) >> 4U));
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s1_prev 
+            = (1U & ((IData)(vlSelf->btn) >> 1U));
+    }
+    if (VL_UNLIKELY(((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_data_valid) 
+                     & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__full))))) {
+        VL_WRITEF_NX("[buffer] write data: %3#\n",0,
+                     8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_send_data);
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count)));
+        __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_send_data;
+        __Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 = 1U;
+        __Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__write_pointer;
+        if (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sf_empty) {
+            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_data 
+                = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_send_data;
+        }
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__write_pointer 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__write_pointer)));
+    }
+    if (VL_UNLIKELY(((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en) 
+                     & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sf_empty))))) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_data 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory
+            [(0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__read_pointer)))];
+        VL_WRITEF_NX("[buffer] read data: %x, count: %2#\n",0,
+                     8,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory
+                     [vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__read_pointer],
+                     4,vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count);
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__read_pointer 
+            = (0xfU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__read_pointer)));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count 
+            = (0xfU & ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count) 
+                       - (IData)(1U)));
+    }
+    if ((((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_data_valid) 
+          & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en)) 
+         & (~ ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__full) 
+               | (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sf_empty))))) {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count 
+            = vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count;
+    }
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt;
     if (top__DOT__my_vga_ctrl__DOT__h_valid) {
         top__DOT__h_addr = (0x3ffU & ((IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt) 
                                       - (IData)(0x91U)));
@@ -197,10 +633,40 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
                                                  & ((IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt) 
                                                     - (IData)(0x24U)))
                                               : 0U);
-    vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s3_prev 
-        = (1U & ((IData)(vlSelf->btn) >> 3U));
-    vlSelf->top__DOT__my_uart_tester__DOT__my_sender_controller__DOT__s0_prev 
-        = (1U & (IData)(vlSelf->btn));
+    vlSelf->seg0 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display
+                             [(0xfU & (IData)(top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data))]));
+    vlSelf->seg1 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display
+                             [(0xfU & ((IData)(top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data) 
+                                       >> 4U))]));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter;
+    if (__Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory[__Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0] 
+            = __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory__v0;
+    }
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__wr_en 
+        = ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data_valid) 
+           & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rxDone));
+    if ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter 
+         == (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__baud_div 
+             - (IData)(1U)))) {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter = 0U;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_tick = 1U;
+    } else {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter 
+            = ((IData)(1U) + vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter);
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_tick = 0U;
+    }
     vlSelf->VGA_R = (0xffU & (vlSelf->top__DOT__my_vmem__DOT__vga_mem
                               [(((IData)(top__DOT__h_addr) 
                                  << 9U) | (IData)(top__DOT____Vcellinp__my_vmem__v_addr))] 
@@ -212,6 +678,197 @@ VL_INLINE_OPT void Vtop___024root___nba_sequent__TOP__0(Vtop___024root* vlSelf) 
     vlSelf->VGA_B = (0xffU & vlSelf->top__DOT__my_vmem__DOT__vga_mem
                      [(((IData)(top__DOT__h_addr) << 9U) 
                        | (IData)(top__DOT____Vcellinp__my_vmem__v_addr))]);
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__busy = 0U;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty 
+        = (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__full 
+        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en 
+        = ((IData)(vlSelf->btn) & ((0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count)) 
+                                   & (IData)(vlSelf->sw)));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__baud_div = 0x1b2U;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sf_empty 
+        = (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__full 
+        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en 
+        = ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count)) 
+           & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy)));
+    if (((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__send_signal) 
+         & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy)))) {
+        __Vtemp_8[0U] = (IData)((((QData)((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                  [2U])) 
+                                  << 0x38U) | (((QData)((IData)(
+                                                                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                [3U])) 
+                                                << 0x30U) 
+                                               | (((QData)((IData)(
+                                                                   vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                   [4U])) 
+                                                   << 0x28U) 
+                                                  | (((QData)((IData)(
+                                                                      vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                      [5U])) 
+                                                      << 0x20U) 
+                                                     | (QData)((IData)(
+                                                                       (0x9aU 
+                                                                        | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                            [6U] 
+                                                                            << 0x18U) 
+                                                                           | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                               [7U] 
+                                                                               << 0x10U) 
+                                                                              | (0xff00U 
+                                                                                & ((~ 
+                                                                                ((IData)(0xf9U) 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [0U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [1U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [2U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [3U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [4U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [5U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [6U] 
+                                                                                + 
+                                                                                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [7U]))))))))) 
+                                                                                << 8U))))))))))));
+        __Vtemp_8[1U] = (IData)(((((QData)((IData)(
+                                                   vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                   [2U])) 
+                                   << 0x38U) | (((QData)((IData)(
+                                                                 vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                 [3U])) 
+                                                 << 0x30U) 
+                                                | (((QData)((IData)(
+                                                                    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                    [4U])) 
+                                                    << 0x28U) 
+                                                   | (((QData)((IData)(
+                                                                       vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                       [5U])) 
+                                                       << 0x20U) 
+                                                      | (QData)((IData)(
+                                                                        (0x9aU 
+                                                                         | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                             [6U] 
+                                                                             << 0x18U) 
+                                                                            | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [7U] 
+                                                                                << 0x10U) 
+                                                                               | (0xff00U 
+                                                                                & ((~ 
+                                                                                ((IData)(0xf9U) 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [0U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [1U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [2U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [3U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [4U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [5U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [6U] 
+                                                                                + 
+                                                                                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [7U]))))))))) 
+                                                                                << 8U))))))))))) 
+                                 >> 0x20U));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U] 
+            = __Vtemp_8[0U];
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U] 
+            = __Vtemp_8[1U];
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U] 
+            = ((0xffffff00U & (0xc010000U | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                             [0U] << 8U))) 
+               | vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+               [1U]);
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U] 
+            = (0xffU & (0x52U | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                 [0U] >> 0x18U)));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy = 1U;
+    } else if (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy) {
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter 
+            = (0x3fU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter)));
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_send_data 
+            = (0xffU & vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U]);
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_data_valid = 1U;
+        if ((0xcU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter))) {
+            __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy = 0U;
+        }
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U] 
+            = (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U] 
+               << 8U);
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U] 
+            = ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U] 
+                >> 0x18U) | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U] 
+                             << 8U));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U] 
+            = ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U] 
+                >> 0x18U) | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U] 
+                             << 8U));
+        __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U] 
+            = (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U] 
+               >> 0x18U);
+    }
+    if ((1U & (~ (IData)(vlSelf->sw)))) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__send_signal 
+            = (1U & (((IData)(vlSelf->btn) >> 2U) & 
+                     (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s2_prev))));
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s2_prev 
+            = (1U & ((IData)(vlSelf->btn) >> 2U));
+    }
+    if ((1U & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy)))) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_data_valid = 0U;
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sc_send_data = 0U;
+    }
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U] 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[0U];
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U] 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[1U];
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U] 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[2U];
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U] 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg[3U];
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter 
+        = __Vdly__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter;
+    if (__Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram[__Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0] 
+            = __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v0;
+    }
+    if (__Vdlyvset__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram[__Vdlyvdim0__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1] 
+            = __Vdlyvval__top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram__v1;
+    }
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__baud_div = 0x1b2U;
 }
 
 void Vtop___024root___eval_triggers__act(Vtop___024root* vlSelf);

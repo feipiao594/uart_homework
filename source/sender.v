@@ -45,6 +45,7 @@ module sender (
 
           if (txStart) begin
             shift_reg <= {1'b0, in_data, 1'b1};  // **起始位(0) + 数据(8) + 停止位(1)**
+            $display("[uart sender] IDLE, get data: %x", in_data);
             bit_cnt   <= 0;
             txBusy    <= 1'b1;
             state     <= START;
@@ -53,6 +54,7 @@ module sender (
 
         START: begin
           if (baud_tick) begin
+            $display("[uart sender] START, send: ", shift_reg[9]);
             tx        <= shift_reg[9];
             shift_reg <= {shift_reg[8:0], 1'b0};
             state     <= DATA;
@@ -61,6 +63,7 @@ module sender (
 
         DATA: begin
           if (baud_tick) begin
+            $display("[uart sender] DATA, send: ", shift_reg[9]);
             tx        <= shift_reg[9];
             shift_reg <= {shift_reg[8:0], 1'b0};
             bit_cnt   <= bit_cnt + 1;
@@ -70,8 +73,9 @@ module sender (
 
         STOP: begin
           if (baud_tick) begin
+            $display("[uart sender] STOP, send: ", shift_reg[9]);
             tx     <= 1'b1;
-            txBusy = 1'b0;
+            txBusy <= 1'b0;
             txDone <= 1'b1;
             state  <= IDLE;
           end

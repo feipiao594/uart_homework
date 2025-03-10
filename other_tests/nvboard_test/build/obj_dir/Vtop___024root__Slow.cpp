@@ -7,8 +7,8 @@
 #include "Vtop___024root.h"
 
 // Parameter definitions for Vtop___024root
-constexpr VlUnpacked<CData/*7:0*/, 16> Vtop___024root::top__DOT__my_uart_tester__DOT__my_lcd_double__DOT__high_lcd_single__DOT__hex_display;
-constexpr VlUnpacked<CData/*7:0*/, 16> Vtop___024root::top__DOT__my_uart_tester__DOT__my_lcd_double__DOT__low_lcd_single__DOT__hex_display;
+constexpr VlUnpacked<CData/*7:0*/, 16> Vtop___024root::top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display;
+constexpr VlUnpacked<CData/*7:0*/, 16> Vtop___024root::top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display;
 
 
 void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf);

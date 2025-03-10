@@ -1,6 +1,6 @@
 module flexiable_buffer #(
-    parameter IN_WIDTH = 16,  // 输入数据位宽
-    parameter OUT_WIDTH = 8,   // 输出数据位宽
+    parameter IN_WIDTH = 8,  // 输入数据位宽
+    parameter OUT_WIDTH = 16,   // 输出数据位宽
     parameter FIFO_DEPTH = 16 // 大的一端 FIFO 深度
 )(
     input wire clk,
