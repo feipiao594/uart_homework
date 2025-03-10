@@ -17,6 +17,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
     // Anonymous structures to workaround compiler member-count bugs
     struct {
         VL_IN8(clk,0,0);
+        CData/*0:0*/ top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n;
         VL_IN8(rst,0,0);
         VL_IN8(btn,4,0);
         VL_IN8(sw,7,0);
@@ -50,13 +51,15 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_data;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sf_empty;
         CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data;
-        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data_valid;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid;
+        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rf_empty;
         CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data;
         CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty;
+        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_busy;
+        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__btn_0_prev;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en;
-        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__wr_en;
+        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__rd_en;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__send_signal;
@@ -77,16 +80,18 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__bit_cnt;
         CData/*1:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__state;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_tick;
+    };
+    struct {
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__full;
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__write_pointer;
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__read_pointer;
-    };
-    struct {
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count;
         CData/*2:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state;
         CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum;
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__busy;
+        CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__ptsEn;
+        CData/*4:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__PTS__DOT__counter;
         CData/*0:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full;
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__write_pointer;
         CData/*3:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__read_pointer;
@@ -94,6 +99,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         CData/*0:0*/ __VstlFirstIteration;
         CData/*0:0*/ __VicoFirstIteration;
         CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
+        CData/*0:0*/ __Vtrigprevexpr___TOP__top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n__0;
         CData/*0:0*/ __VactContinue;
         VL_OUT16(ledr,15,0);
         SData/*9:0*/ top__DOT__my_vga_ctrl__DOT__x_cnt;
@@ -101,12 +107,15 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         SData/*9:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__shift_reg;
         SData/*9:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__shift_reg;
         IData/*31:0*/ top__DOT__my_led__DOT__count;
+        VlWide<4>/*103:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in;
         VlWide<4>/*103:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg;
         IData/*31:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__baud_div;
         IData/*31:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender__DOT__baud_gen__DOT__counter;
         IData/*31:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__baud_div;
         IData/*31:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_receiver__DOT__baud_gen__DOT__counter;
         IData/*31:0*/ __VactIterCount;
+        QData/*63:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf;
+        QData/*63:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__PTS__DOT__shift_reg;
         VlUnpacked<CData/*7:0*/, 8> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram;
         VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory;
         VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory;
@@ -115,8 +124,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
     };
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<1> __VicoTriggered;
-    VlTriggerVec<1> __VactTriggered;
-    VlTriggerVec<1> __VnbaTriggered;
+    VlTriggerVec<2> __VactTriggered;
+    VlTriggerVec<2> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vtop__Syms* const vlSymsp;

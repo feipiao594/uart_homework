@@ -20,13 +20,13 @@ module sender_controller (
     // 存储上一个时钟周期的按键状态
     reg s3_prev, s0_prev, s4_prev, s1_prev, s2_prev;
 
-    wire [7:0] checksum = 8'h52 + 8'h0C + 8'h01 + 8'h9A + data_ram[0] + data_ram[1] + data_ram[2] + data_ram[3] + data_ram[4] + data_ram[5] + data_ram[6] + data_ram[7];
+    wire [7:0] checksum = 8'h52 + 8'h0D + 8'h01 + 8'h9A + data_ram[0] + data_ram[1] + data_ram[2] + data_ram[3] + data_ram[4] + data_ram[5] + data_ram[6] + data_ram[7];
 
     parallel_to_serial #(.P_WIDTH(104), .S_WIDTH(8)) P2S (
                 .clk(clk),
                 .rst(~rst_n),
                 .load(send_signal),
-                .parallel_in({8'h52, 8'h0C, 8'h01, // 帧头标识:0x52 帧长度:12/0x0C 功能码:1 0x01
+                .parallel_in({8'h52, 8'h0D, 8'h01, // 帧头标识:0x52 帧长度:12/0x0D 功能码:1 0x01
                               data_ram[0],
                               data_ram[1],
                               data_ram[2],

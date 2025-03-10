@@ -1,6 +1,7 @@
 module uart_tester(
     clk,
     btn,
+    rst,
     o_seg0,
     o_seg1,
     o_seg2,
@@ -18,18 +19,18 @@ module uart_tester(
   wire [15:0] ports;
   wire start;
   input wire feipiao_0_sw;
+  input wire rst;
 
   wire my_communication_uart_tx;
-  wire my_communication_uart_rx;
   wire my_communication_uart_seg;
 
   communication_uart my_communication_uart (
       .btn(btn),
       .switch_sw(feipiao_0_sw),
       .clk(clk),
-      .rst_n(1'b1),
+      .rst_n(~rst),
       .seg(ports),
-      .tx(my_communication_uart_rx),
+      .tx(my_communication_uart_tx),
       /* verilator lint_off PINCONNECTEMPTY */
       .txDone(),
       /* verilator lint_off PINCONNECTEMPTY */

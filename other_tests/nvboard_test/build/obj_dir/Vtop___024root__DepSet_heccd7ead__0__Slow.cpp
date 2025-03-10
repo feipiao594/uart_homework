@@ -40,6 +40,8 @@ VL_ATTR_COLD void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     // Body
     Vtop___024root___eval_initial__TOP(vlSelf);
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = vlSelf->clk;
+    vlSelf->__Vtrigprevexpr___TOP__top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n__0 
+        = vlSelf->top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n;
 }
 
 VL_ATTR_COLD void Vtop___024root___eval_initial__TOP(Vtop___024root* vlSelf) {
@@ -145,12 +147,15 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
     top__DOT__my_vga_ctrl__DOT__v_valid = 0;
     CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data;
     top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data = 0;
+    VlWide<3>/*95:0*/ __Vtemp_1;
     // Body
     vlSelf->VGA_CLK = vlSelf->clk;
+    vlSelf->top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n 
+        = (1U & (~ ((IData)(vlSelf->sw) >> 1U)));
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty 
-        = (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count));
-    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__full 
-        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count));
+        = (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full 
+        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count));
     vlSelf->uart_tx = vlSelf->uart_rx;
     vlSelf->VGA_HSYNC = (0x60U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt));
     vlSelf->VGA_VSYNC = (2U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt));
@@ -158,14 +163,129 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
         = (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count));
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__full 
         = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count));
-    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full 
-        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rf_empty 
+        = (0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__full 
+        = (0xfU == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count));
+    __Vtemp_1[0U] = (IData)((((QData)((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                              [2U])) 
+                              << 0x38U) | (((QData)((IData)(
+                                                            vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                            [3U])) 
+                                            << 0x30U) 
+                                           | (((QData)((IData)(
+                                                               vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                               [4U])) 
+                                               << 0x28U) 
+                                              | (((QData)((IData)(
+                                                                  vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                  [5U])) 
+                                                  << 0x20U) 
+                                                 | (QData)((IData)(
+                                                                   (0x9aU 
+                                                                    | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                        [6U] 
+                                                                        << 0x18U) 
+                                                                       | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                           [7U] 
+                                                                           << 0x10U) 
+                                                                          | (0xff00U 
+                                                                             & ((~ 
+                                                                                ((IData)(0xfaU) 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [0U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [1U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [2U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [3U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [4U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [5U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [6U] 
+                                                                                + 
+                                                                                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [7U]))))))))) 
+                                                                                << 8U))))))))))));
+    __Vtemp_1[1U] = (IData)(((((QData)((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                               [2U])) 
+                               << 0x38U) | (((QData)((IData)(
+                                                             vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                             [3U])) 
+                                             << 0x30U) 
+                                            | (((QData)((IData)(
+                                                                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                [4U])) 
+                                                << 0x28U) 
+                                               | (((QData)((IData)(
+                                                                   vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                   [5U])) 
+                                                   << 0x20U) 
+                                                  | (QData)((IData)(
+                                                                    (0x9aU 
+                                                                     | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                         [6U] 
+                                                                         << 0x18U) 
+                                                                        | ((vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                            [7U] 
+                                                                            << 0x10U) 
+                                                                           | (0xff00U 
+                                                                              & ((~ 
+                                                                                ((IData)(0xfaU) 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [0U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [1U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [2U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [3U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [4U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [5U] 
+                                                                                + 
+                                                                                (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [6U] 
+                                                                                + 
+                                                                                vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                                                                [7U]))))))))) 
+                                                                                << 8U))))))))))) 
+                             >> 0x20U));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in[0U] 
+        = __Vtemp_1[0U];
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in[1U] 
+        = __Vtemp_1[1U];
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in[2U] 
+        = ((0xffffff00U & (0xd010000U | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                                         [0U] << 8U))) 
+           | vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+           [1U]);
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in[3U] 
+        = (0xffU & (0x52U | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
+                             [0U] >> 0x18U)));
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en 
         = ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count)) 
            & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy)));
-    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__wr_en 
-        = ((IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data_valid) 
-           & (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rxDone));
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__rd_en 
+        = (1U & ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count)) 
+                 | (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_busy))));
     vlSelf->ledr = (((IData)(vlSelf->sw) << 8U) | (
                                                    (0xe0U 
                                                     & (IData)(vlSelf->top__DOT__my_led__DOT__led)) 
@@ -173,8 +293,9 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
                                                       & ((IData)(vlSelf->top__DOT__my_led__DOT__led) 
                                                          ^ (IData)(vlSelf->btn)))));
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en 
-        = ((IData)(vlSelf->btn) & ((0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__count)) 
-                                   & (IData)(vlSelf->sw)));
+        = ((~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__btn_0_prev)) 
+           & ((IData)(vlSelf->btn) & ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count)) 
+                                      & (IData)(vlSelf->sw))));
     top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data 
         = ((1U & (IData)(vlSelf->sw)) ? (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data)
             : (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data));
@@ -259,6 +380,9 @@ VL_ATTR_COLD void Vtop___024root___dump_triggers__act(Vtop___024root* vlSelf) {
     if ((1ULL & vlSelf->__VactTriggered.word(0U))) {
         VL_DBG_MSGF("         'act' region trigger index 0 is active: @(posedge clk)\n");
     }
+    if ((2ULL & vlSelf->__VactTriggered.word(0U))) {
+        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(posedge clk or negedge top.my_uart_tester.__Vcellinp__my_communication_uart__rst_n)\n");
+    }
 }
 #endif  // VL_DEBUG
 
@@ -273,6 +397,9 @@ VL_ATTR_COLD void Vtop___024root___dump_triggers__nba(Vtop___024root* vlSelf) {
     }
     if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
         VL_DBG_MSGF("         'nba' region trigger index 0 is active: @(posedge clk)\n");
+    }
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(posedge clk or negedge top.my_uart_tester.__Vcellinp__my_communication_uart__rst_n)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -311,6 +438,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt = 0;
     vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart_tx = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rxDone = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data = 0;
@@ -320,13 +448,15 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_data = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sf_empty = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data = 0;
-    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_data_valid = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_data_valid = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__rf_empty = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_in_data = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_out_data = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__pf_empty = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_busy = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__btn_0_prev = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en = 0;
-    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__wr_en = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__receiver_buffer__rd_en = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__parser_buffer__rd_en = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__busy = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__send_signal = 0;
@@ -339,6 +469,7 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s4_prev = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s1_prev = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__s2_prev = 0;
+    VL_ZERO_RESET_W(104, vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in);
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__counter = 0;
     VL_ZERO_RESET_W(104, vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__P2S__DOT__shift_reg);
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__full = 0;
@@ -370,7 +501,11 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__state = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__checksum = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_cnt = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__data_buf = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__busy = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__ptsEn = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__PTS__DOT__counter = 0;
+    vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_parser__DOT__PTS__DOT__shift_reg = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__full = 0;
     for (int __Vi0 = 0; __Vi0 < 16; ++__Vi0) {
         vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory[__Vi0] = 0;
@@ -382,4 +517,5 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_vmem__DOT__vga_mem[__Vi0] = 0;
     }
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = 0;
+    vlSelf->__Vtrigprevexpr___TOP__top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n__0 = 0;
 }

@@ -54,8 +54,6 @@ module receiver (
             if (baud_tick) begin
               state <= DATA;  // 在波特率周期到来后，开始接收数据
             end
-          end else begin
-            state <= IDLE;  // 起始位异常，回到空闲状态
           end
         end
 
@@ -67,15 +65,15 @@ module receiver (
               shift_reg[8:0], rx
             };  // 左移并存入新位 最终数据格式为起始+8数据+终止
             bit_cnt <= bit_cnt + 1;
-            if (bit_cnt == 8) state <= STOP;  // 数据接收完成，进入停止位检测
+            if (bit_cnt == 7) state <= STOP;  // 数据接收完成，进入停止位检测
           end
         end
 
         // **验证停止位并输出数据**
-        STOP: begin
+        STOP: if (baud_tick) begin
           if (rx == 1'b1) begin  // 停止位必须是 1
-            out_data <= shift_reg[8:1];  // 提取数据位
-            right    <= (shift_reg[8:1] != 8'b0); // 只有非全0数据才认为有效
+            out_data <= shift_reg[7:0];  // 提取数据位
+            // $display("[uart receiver] STOP, %x", shift_reg[7:0]);
           end
           rxDone <= 1'b1;  // 接收完成信号
           rxBusy <= 1'b0;  // 释放忙信号

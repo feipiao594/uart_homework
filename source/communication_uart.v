@@ -20,12 +20,13 @@ wire [7:0] sender_data;
 wire sf_data_ready;
 wire sf_empty;
 wire [7:0] receiver_data;
-wire receiver_data_valid;
 wire parser_data_valid;
 wire rf_empty;
 wire [7:0] parser_in_data;
 wire [7:0] parser_out_data;
 wire pf_empty;
+wire parser_busy;
+reg btn_0_prev;
 
 sender_controller m_sender_controller (
     .clk(clk),             // 时钟信号
@@ -74,38 +75,51 @@ receiver m_receiver(
     .out_data(receiver_data),
     .rxBusy(rxBusy),
     .rxDone(rxDone),
-    .right(receiver_data_valid)
+    /* verilator lint_off PINCONNECTEMPTY */
+    .right()
 );
 
 fifo_buffer receiver_buffer (
     .clk(clk),
     .rst(~rst_n),
-    .wr_en(receiver_data_valid && rxDone),
-    .rd_en(~pf_empty),
+    .wr_en(rxDone),
+    .rd_en(~rf_empty || ~parser_busy),
     .data_in(receiver_data),
-    /* verilator lint_off PINCONNECTEMPTY */
-    .data_out(),
+    .data_out(parser_in_data),
     /* verilator lint_off PINCONNECTEMPTY */
     .full(),
-    .empty(pf_empty)
+    .empty(rf_empty)
 );
 
 parser m_parser(
     .clk(clk),
     .rst_n(rst_n),
-    .En(~pf_empty),
+    .En(~rf_empty),
     .indata(parser_in_data),
     .outdata(parser_out_data),
+    .pBusy(parser_busy),
+    .data_valid(parser_data_valid),
     /* verilator lint_off PINCONNECTEMPTY */
-    .pBusy(),
-    .pDone(parser_data_valid)
+    .pDone()
 );
+
+always @(posedge clk) begin
+    if (!rst_n) begin
+        btn_0_prev <= 1'b0;
+    end else begin
+        btn_0_prev <= btn[0];
+    end
+    if (btn[0] && !btn_0_prev)
+        $display("[communication uart] receive data: %x", receive_data);
+    if (parser_data_valid)
+        $display("[communication uart] parser data: %x", parser_out_data);
+end
 
 fifo_buffer parser_buffer (
     .clk(clk),
     .rst(~rst_n),
     .wr_en(parser_data_valid),
-    .rd_en(btn[0] && switch_sw && pf_empty),
+    .rd_en(btn[0] && !btn_0_prev && switch_sw && !pf_empty),
     .data_in(parser_out_data),
     .data_out(receive_data),
     /* verilator lint_off PINCONNECTEMPTY */

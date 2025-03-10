@@ -37,19 +37,23 @@ module fifo_buffer #(
             count <= 0;
         end
         else begin
+            if (!empty)
+                data_out <= memory[read_pointer];  // 默认读取数据，用rd表示已收到
             if (wr_en && !full) begin
                 memory[write_pointer] <= data_in;  // 写入数据
-                $display("[buffer] write data: %d", data_in);
+                $display("[buffer] write data: %x", data_in);
                 write_pointer <= write_pointer + 1;  // 更新写指针
                 count <= count + 1;
+                // $display("[buffer] count: %d, empty: %d", count, empty);
                 if (empty) begin
                     data_out <= data_in;
                 end 
             end
             if (rd_en && !empty) begin
-                data_out <= memory[read_pointer + 1];  // 默认读取数据，用rd表示已收到
                 $display("[buffer] read data: %x, count: %d", memory[read_pointer], count);
                 read_pointer <= read_pointer + 1;  // 更新读指针
+                if (empty) 
+                    data_out <= memory[read_pointer + 1];  // 默认读取数据，用rd表示已收到
                 count <= count - 1;
             end
             if (wr_en && rd_en && ~(full || empty)) begin

@@ -22,18 +22,20 @@ module parallel_to_serial #(
             busy <= 0;
         end
         else if (load && !busy) begin
-            // $display("[p2s input] indata: %x", parallel_in);
+            $display("[p2s input] indata: %x", parallel_in);
             shift_reg <= parallel_in;
             busy <= 1; // 开始输出
         end
         else if (busy) begin
             serial_out <= shift_reg[P_WIDTH-1:P_WIDTH-S_WIDTH];
-            // $display("[p2s output] outdata: %x ", shift_reg[P_WIDTH-1:P_WIDTH-S_WIDTH]);
+            $display("[p2s output] outdata: %x, count: %d", shift_reg[P_WIDTH-1:P_WIDTH-S_WIDTH], counter);
             shift_reg <= { shift_reg[P_WIDTH-S_WIDTH-1:0], {S_WIDTH{1'b0}}};
             valid <= 1; // 数据有效
             counter <= counter + 1;
-            if (counter == COUNT_MAX[$clog2(COUNT_MAX)+1:0]-1)
+            if (counter == COUNT_MAX[$clog2(COUNT_MAX)+1:0]-1) begin
                 busy <= 0; // 数据已经输出完毕
+                counter <= 0; // 重新计数
+            end
         end
 
         if (!busy) begin
