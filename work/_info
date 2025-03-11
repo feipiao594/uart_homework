@@ -81,7 +81,7 @@ R9
 R10
 R2
 vbaudrate_generator
-Z11 !s110 1741504933
+Z11 !s110 1741672251
 !i10b 1
 !s100 PEEDUA;b^6?D4jJ8=DSSQ3
 IF?`k0kG2hJ`FoRR9c@FX10
@@ -95,41 +95,62 @@ R8
 r1
 !s85 0
 31
-Z12 !s108 1741504933.000000
+Z12 !s108 1741672251.000000
 !s107 F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v|
 !i113 0
 R10
 R2
 vbaudrate_generator_tb
-R11
+Z13 !s110 1741504933
 !i10b 1
 !s100 ?CPL7G7WN5WGzA:f4SSz?3
 I2cGTjAboVcEB;:98gbkI_1
 R5
 R6
 w1741228233
-Z13 8F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
-Z14 FF:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
+Z14 8F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
+Z15 FF:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
 L0 3
 R8
 r1
 !s85 0
 31
-R12
-Z15 !s107 F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v|
-Z16 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v|
+Z16 !s108 1741504933.000000
+Z17 !s107 F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v|
+Z18 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v|
+!i113 0
+R10
+R2
+vcommunication_uart
+!s110 1741672353
+!i10b 1
+!s100 B1hdkRGILYn=2nmO^zonD1
+Ib0XG8EA=lkRkCgf[fPAKV0
+R5
+R6
+Z19 w1741609379
+8F:/GITCLONE/uart_homework/source/communication_uart.v
+FF:/GITCLONE/uart_homework/source/communication_uart.v
+L0 1
+R8
+r1
+!s85 0
+31
+!s108 1741672353.000000
+!s107 F:/GITCLONE/uart_homework/source/communication_uart.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/communication_uart.v|
 !i113 0
 R10
 R2
 vfifo_buffer
-!s110 1741228085
+R11
 !i10b 1
-!s100 gRnEQZiz_klZc>?ba2TDR2
-IL8YhDf`9dEX1STzMZb4J93
+!s100 6P=0@SD22VA>:gei9CHFd2
+I>=DFkNkhlVeQNJ[F9@l@M1
 R5
 R6
-w1741154241
+R19
 8F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v
 FF:/GITCLONE/uart_homework/source/utils/fifo_buffer.v
 L0 1
@@ -137,20 +158,62 @@ R8
 r1
 !s85 0
 31
-!s108 1741228085.000000
+R12
 !s107 F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/fifo_buffer.v|
 !i113 0
 R10
 R2
-vparallel_to_serial
-Z17 !s110 1741504934
+vflexiable_buffer
+Z20 !s110 1741672252
 !i10b 1
-!s100 3gb_aO1;=CWaVUCNNDcQ63
-I?FL;F8c6`NobKEkffCZmV0
+!s100 @MHHNg6YaaKR_dHVgY02N2
+I<6m:E=6YgY?c]4E_VYZlh1
 R5
 R6
-Z18 w1741504797
+R19
+8F:/GITCLONE/uart_homework/source/utils/flexiable_buffer.v
+FF:/GITCLONE/uart_homework/source/utils/flexiable_buffer.v
+L0 1
+R8
+r1
+!s85 0
+31
+Z21 !s108 1741672252.000000
+!s107 F:/GITCLONE/uart_homework/source/utils/flexiable_buffer.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/flexiable_buffer.v|
+!i113 0
+R10
+R2
+vlcd_double
+R20
+!i10b 1
+!s100 4I^7E7DO48A8j7O3WOneB2
+IN[Y?HJ9aIlU]B@KX^a1d>3
+R5
+R6
+w1741154241
+8F:/GITCLONE/uart_homework/source/utils/lcd_double.v
+FF:/GITCLONE/uart_homework/source/utils/lcd_double.v
+L0 1
+R8
+r1
+!s85 0
+31
+R21
+!s107 F:/GITCLONE/uart_homework/source/utils/lcd_double.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/lcd_double.v|
+!i113 0
+R10
+R2
+vparallel_to_serial
+R20
+!i10b 1
+!s100 fGHKhEmLf^^NHz??B>?<X1
+ImVn3k[@>S=N1`XlbQLZ]c1
+R5
+R6
+R19
 8F:/GITCLONE/uart_homework/source/utils/parallel_to_serial.v
 FF:/GITCLONE/uart_homework/source/utils/parallel_to_serial.v
 L0 1
@@ -158,20 +221,20 @@ R8
 r1
 !s85 0
 31
-Z19 !s108 1741504934.000000
+R21
 !s107 F:/GITCLONE/uart_homework/source/utils/parallel_to_serial.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/parallel_to_serial.v|
 !i113 0
 R10
 R2
 vparser
-!s110 1741504966
+R11
 !i10b 1
-!s100 8eF23OQEjjRUa8MCjT3zk1
-Ik4O6LZWFg^z_i9zzfoI_41
+!s100 YKkf6`MZA>WS:3DP8k=oT3
+IhMQAlKPlS3XGikI93MW[93
 R5
 R6
-w1741504960
+w1741609479
 8F:/GITCLONE/uart_homework/source/parser.v
 FF:/GITCLONE/uart_homework/source/parser.v
 L0 1
@@ -179,20 +242,20 @@ R8
 r1
 !s85 0
 31
-!s108 1741504966.000000
+R12
 !s107 F:/GITCLONE/uart_homework/source/parser.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/parser.v|
 !i113 0
 R10
 R2
 vreceiver
-R17
+R11
 !i10b 1
-!s100 :F:ooma<5k;zaBh<3f<zT0
-I8FEoPaaT:7eUmaEKC2<_n0
+!s100 V4B692:><zBQj9k@RU1JK2
+I=<8YbY`z2QV]0M^Ak`]F42
 R5
 R6
-R18
+w1741609501
 8F:/GITCLONE/uart_homework/source/receiver.v
 FF:/GITCLONE/uart_homework/source/receiver.v
 L0 1
@@ -200,20 +263,20 @@ R8
 r1
 !s85 0
 31
-R19
+R12
 !s107 F:/GITCLONE/uart_homework/source/receiver.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/receiver.v|
 !i113 0
 R10
 R2
 vreceiver_tb
-R17
+Z22 !s110 1741504934
 !i10b 1
 !s100 <nE<XIGWegc3R0d;;BLY33
 IzjT>=?b9`o;=fnCQI>Y<Q1
 R5
 R6
-R18
+Z23 w1741504797
 8F:/GITCLONE/uart_homework/testbench/receiver_tb.v
 FF:/GITCLONE/uart_homework/testbench/receiver_tb.v
 L0 3
@@ -221,20 +284,20 @@ R8
 r1
 !s85 0
 31
-R19
+Z24 !s108 1741504934.000000
 !s107 F:/GITCLONE/uart_homework/testbench/receiver_tb.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/receiver_tb.v|
 !i113 0
 R10
 R2
 vs_to_r
-R17
+R22
 !i10b 1
 !s100 n[^GgaWjiO2i0oEz?FYCK1
 IgR_klHkF2DTCR91<QD;8i0
 R5
 R6
-R18
+R23
 8F:/GITCLONE/uart_homework/testbench/s_to_r.v
 FF:/GITCLONE/uart_homework/testbench/s_to_r.v
 L0 3
@@ -242,7 +305,7 @@ R8
 r1
 !s85 0
 31
-R19
+R24
 !s107 F:/GITCLONE/uart_homework/testbench/s_to_r.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/s_to_r.v|
 !i113 0
@@ -251,11 +314,11 @@ R2
 vsender
 R11
 !i10b 1
-!s100 <_MOW==[=kLCLzD<>KPbG0
-IbfSS6n00l:VaD1?3URKWN1
+!s100 L@RhOT0kPDQlH[oa16GTI1
+IWmJQaSmUaAl8Tz51bQcUh0
 R5
 R6
-w1741489102
+R19
 8F:/GITCLONE/uart_homework/source/sender.v
 FF:/GITCLONE/uart_homework/source/sender.v
 L0 1
@@ -269,24 +332,66 @@ R12
 !i113 0
 R10
 R2
-vsender_tb
+vsender_controller
 R11
+!i10b 1
+!s100 7CkBz[[<MZzNJ?:0hjBG_3
+IY:DkVm`U1H5mc0:m;1<<z1
+R5
+R6
+R19
+8F:/GITCLONE/uart_homework/source/sender_controller.v
+FF:/GITCLONE/uart_homework/source/sender_controller.v
+L0 1
+R8
+r1
+!s85 0
+31
+R12
+!s107 F:/GITCLONE/uart_homework/source/sender_controller.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/sender_controller.v|
+!i113 0
+R10
+R2
+vsender_tb
+R13
 !i10b 1
 !s100 1j:C96hBm@2J7`M<zP_7L0
 Ic<g=Y3SUC7Rk]XH1MzKoJ0
 R5
 R6
 w1741264854
-Z20 8F:/GITCLONE/uart_homework/testbench/sender_tb.v
-Z21 FF:/GITCLONE/uart_homework/testbench/sender_tb.v
+Z25 8F:/GITCLONE/uart_homework/testbench/sender_tb.v
+Z26 FF:/GITCLONE/uart_homework/testbench/sender_tb.v
 L0 3
 R8
 r1
 !s85 0
 31
-R12
-Z22 !s107 F:/GITCLONE/uart_homework/testbench/sender_tb.v|
-Z23 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/sender_tb.v|
+R16
+Z27 !s107 F:/GITCLONE/uart_homework/testbench/sender_tb.v|
+Z28 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/testbench/sender_tb.v|
+!i113 0
+R10
+R2
+vserial_to_parallel
+R20
+!i10b 1
+!s100 LILI>83HB8P6oTEF<P9B>0
+IM1gbZa_S2^189=QKF=ol?2
+R5
+R6
+R19
+8F:/GITCLONE/uart_homework/source/utils/serial_to_parallel.v
+FF:/GITCLONE/uart_homework/source/utils/serial_to_parallel.v
+L0 1
+R8
+r1
+!s85 0
+31
+R21
+!s107 F:/GITCLONE/uart_homework/source/utils/serial_to_parallel.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/serial_to_parallel.v|
 !i113 0
 R10
 R2
@@ -298,16 +403,16 @@ IXaiP]O369[=z>^oelSYcV0
 R5
 R6
 w1741079706
-R20
-R21
+R25
+R26
 L0 3
 R8
 r1
 !s85 0
 31
 !s108 1741249262.000000
-R22
-R23
+R27
+R28
 !i113 0
 R10
 R2
@@ -319,16 +424,37 @@ IF4VU_@F0I>=ae`DO_26[l2
 R5
 R6
 w1741224651
-R13
 R14
+R15
 L0 3
 R8
 r1
 !s85 0
 31
 !s108 1741226454.000000
-R15
-R16
+R17
+R18
+!i113 0
+R10
+R2
+vtrans_counter
+R11
+!i10b 1
+!s100 KaSU5Ed`4S28IUIGP?T6O3
+IbOG<6o`c0SVKzh30Ce4eN1
+R5
+R6
+w1741504661
+8F:/GITCLONE/uart_homework/source/utils/trans_counter.v
+FF:/GITCLONE/uart_homework/source/utils/trans_counter.v
+L0 1
+R8
+r1
+!s85 0
+31
+R12
+!s107 F:/GITCLONE/uart_homework/source/utils/trans_counter.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|F:/GITCLONE/uart_homework/source/utils/trans_counter.v|
 !i113 0
 R10
 R2

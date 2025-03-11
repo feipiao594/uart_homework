@@ -109,6 +109,6 @@ module vmem (
     $readmemh("resource/picture.hex", vga_mem);
   end
 
-  assign vga_data = vga_mem[{h_addr, v_addr}];
+  assign vga_data = 24'h66CCFF;
 
 endmodule

@@ -30,14 +30,14 @@ module parser (
       .S_WIDTH(8)    // 串行输出数据位宽
   ) PTS (
       .clk        (clk),         // 时钟信号
-      .rst        (~rst_n),       // 复位信号
-      .load       (ptsEn),          // 使能加载并行数据
+      .rst        (~rst_n),      // 复位信号
+      .load       (ptsEn),       // 使能加载并行数据
       .parallel_in(data_buf),    // 并行输入数据
-      .serial_out (outdata),  // 串行输出数据
-      .valid      (data_valid),       // 并行数据有效信号
+      .serial_out (outdata),     // 串行输出数据
+      .valid      (data_valid),  // 并行数据有效信号
       .busy       (busy)         // 正在输出串行数据信号
   );
-  
+
   always @(posedge clk) begin
     if (!rst_n) begin
       state    <= IDLE;
@@ -47,8 +47,7 @@ module parser (
       data_cnt <= 4'b0;
       data_buf <= 64'b0;
       ptsEn <= 1'b0;
-    end 
-    else begin      /* verilator lint_off CASEINCOMPLETE */
+    end else begin  /* verilator lint_off CASEINCOMPLETE */
       case (state)
         IDLE: begin
           pBusy    <= 1'b0;
@@ -60,7 +59,8 @@ module parser (
           state <= HEADER;
         end
 
-        HEADER: if (En) begin
+        HEADER:
+        if (En) begin
           // $display("[parser]: state: `HEADER`, indata: %x", indata);
           if (indata == 8'h52) begin
             pBusy <= 1'b1;
@@ -69,7 +69,8 @@ module parser (
           end
         end
 
-        LENGTH: if (En) begin
+        LENGTH:
+        if (En) begin
           // $display("[parser]: state: `LENGTH`, indata: %x", indata);
           if (indata == 8'h0D) begin
             checksum <= checksum + indata;
@@ -77,7 +78,8 @@ module parser (
           end
         end
 
-        CMD: if (En) begin
+        CMD:
+        if (En) begin
           // $display("[parser]: state: `CMD`, indata: %x", indata);
           if (indata == 8'h01) begin
             checksum <= checksum + indata;
@@ -85,7 +87,8 @@ module parser (
           end
         end
 
-        DATA: if (En) begin
+        DATA:
+        if (En) begin
           // $display("[parser]: state: `DATA`, indata: %x", indata);
           data_buf[(7-data_cnt)*8+:8] <= indata;
           checksum <= checksum + indata;
@@ -95,13 +98,15 @@ module parser (
           data_cnt <= data_cnt + 1;
         end
 
-        CHECK: if (En) begin
+        CHECK:
+        if (En) begin
           // $display("[parser]: state: `CHECK`, indata: %x", indata);
           checksum <= checksum + indata;
           state <= TAIL;
         end
 
-        TAIL: if (En) begin
+        TAIL:
+        if (En) begin
           // $display("[parser]: state: `TAIL`, indata: %x", indata);
           if (indata != 8'h9A) begin  // 确保尾部正确
             // $display("[parser]: tail error");
@@ -109,9 +114,9 @@ module parser (
             pBusy <= 1'b0;
             pDone <= 1'b0;
           end else
-            // $display("[parser]: tail right");
+          // $display("[parser]: tail right");
           if (checksum + indata == 255) begin
-            // $display("[parser]: data accepted: %x", data_buf);
+            $display("[parser]: data accepted: %x", data_buf);
             ptsEn <= 1'b1;
           end else begin
             // $display("[parser]: data not accepted, checksum calculate: %b", checksum + indata);

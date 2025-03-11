@@ -49,8 +49,17 @@ VL_ATTR_COLD void Vtop___024root___eval_initial__TOP(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_initial__TOP\n"); );
     // Init
+    VlUnpacked<IData/*23:0*/, 524288> top__DOT__my_vmem__DOT__vga_mem;
+    for (int __Vi0 = 0; __Vi0 < 524288; ++__Vi0) {
+        top__DOT__my_vmem__DOT__vga_mem[__Vi0] = 0;
+    }
     VlWide<5>/*159:0*/ __Vtemp_1;
+    VlWide<5>/*159:0*/ __Vtemp_2;
+    VlWide<5>/*159:0*/ __Vtemp_3;
     // Body
+    vlSelf->VGA_R = 0x66U;
+    vlSelf->VGA_G = 0xccU;
+    vlSelf->VGA_B = 0xffU;
     vlSelf->seg2 = 0xffU;
     vlSelf->seg3 = 0xffU;
     vlSelf->seg4 = 0xffU;
@@ -58,12 +67,28 @@ VL_ATTR_COLD void Vtop___024root___eval_initial__TOP(Vtop___024root* vlSelf) {
     vlSelf->seg6 = 0xffU;
     vlSelf->seg7 = 0xffU;
     __Vtemp_1[0U] = 0x2e686578U;
-    __Vtemp_1[1U] = 0x74757265U;
-    __Vtemp_1[2U] = 0x2f706963U;
-    __Vtemp_1[3U] = 0x75726365U;
-    __Vtemp_1[4U] = 0x7265736fU;
-    VL_READMEM_N(true, 24, 524288, 0, VL_CVT_PACK_STR_NW(5, __Vtemp_1)
-                 ,  &(vlSelf->top__DOT__my_vmem__DOT__vga_mem)
+    __Vtemp_1[1U] = 0x2f6d656dU;
+    __Vtemp_1[2U] = 0x75726365U;
+    __Vtemp_1[3U] = 0x7265736fU;
+    __Vtemp_1[4U] = 0x2e2fU;
+    VL_READMEM_N(true, 8, 16, 0, VL_CVT_PACK_STR_NW(5, __Vtemp_1)
+                 ,  &(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display)
+                 , 0U, 0xfU);
+    __Vtemp_2[0U] = 0x2e686578U;
+    __Vtemp_2[1U] = 0x2f6d656dU;
+    __Vtemp_2[2U] = 0x75726365U;
+    __Vtemp_2[3U] = 0x7265736fU;
+    __Vtemp_2[4U] = 0x2e2fU;
+    VL_READMEM_N(true, 8, 16, 0, VL_CVT_PACK_STR_NW(5, __Vtemp_2)
+                 ,  &(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display)
+                 , 0U, 0xfU);
+    __Vtemp_3[0U] = 0x2e686578U;
+    __Vtemp_3[1U] = 0x74757265U;
+    __Vtemp_3[2U] = 0x2f706963U;
+    __Vtemp_3[3U] = 0x75726365U;
+    __Vtemp_3[4U] = 0x7265736fU;
+    VL_READMEM_N(true, 24, 524288, 0, VL_CVT_PACK_STR_NW(5, __Vtemp_3)
+                 ,  &(top__DOT__my_vmem__DOT__vga_mem)
                  , 0, ~0ULL);
 }
 
@@ -137,16 +162,8 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___stl_sequent__TOP__0\n"); );
     // Init
-    SData/*9:0*/ top__DOT__h_addr;
-    top__DOT__h_addr = 0;
-    SData/*8:0*/ top__DOT____Vcellinp__my_vmem__v_addr;
-    top__DOT____Vcellinp__my_vmem__v_addr = 0;
-    CData/*0:0*/ top__DOT__my_vga_ctrl__DOT__h_valid;
-    top__DOT__my_vga_ctrl__DOT__h_valid = 0;
-    CData/*0:0*/ top__DOT__my_vga_ctrl__DOT__v_valid;
-    top__DOT__my_vga_ctrl__DOT__v_valid = 0;
-    CData/*7:0*/ top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data;
-    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data = 0;
+    IData/*31:0*/ __VdfgRegularize_hd87f99a1_0_0;
+    __VdfgRegularize_hd87f99a1_0_0 = 0;
     VlWide<3>/*95:0*/ __Vtemp_1;
     // Body
     vlSelf->VGA_CLK = vlSelf->clk;
@@ -280,6 +297,10 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT____Vcellinp__P2S__parallel_in[3U] 
         = (0xffU & (0x52U | (vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_sender_controller__DOT__data_ram
                              [0U] >> 0x18U)));
+    vlSelf->VGA_BLANK_N = (((0x90U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt)) 
+                            & (0x310U >= (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt))) 
+                           & ((0x23U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt)) 
+                              & (0x203U >= (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt))));
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__sender_buffer__rd_en 
         = ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__count)) 
            & (~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__txBusy)));
@@ -296,44 +317,15 @@ VL_ATTR_COLD void Vtop___024root___stl_sequent__TOP__0(Vtop___024root* vlSelf) {
         = ((~ (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__btn_0_prev)) 
            & ((IData)(vlSelf->btn) & ((0U != (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count)) 
                                       & (IData)(vlSelf->sw))));
-    top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data 
-        = ((1U & (IData)(vlSelf->sw)) ? (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data)
-            : (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data));
-    top__DOT__my_vga_ctrl__DOT__h_valid = ((0x90U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt)) 
-                                           & (0x310U 
-                                              >= (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt)));
-    top__DOT__my_vga_ctrl__DOT__v_valid = ((0x23U < (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt)) 
-                                           & (0x203U 
-                                              >= (IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt)));
+    __VdfgRegularize_hd87f99a1_0_0 = ((1U & (IData)(vlSelf->sw))
+                                       ? ((0U == (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count))
+                                           ? 0U : (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receive_data))
+                                       : (IData)(vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__preview_data));
     vlSelf->seg0 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display
-                             [(0xfU & (IData)(top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data))]));
+                             [(0xfU & __VdfgRegularize_hd87f99a1_0_0)]));
     vlSelf->seg1 = (0xffU & (~ vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display
-                             [(0xfU & ((IData)(top__DOT__my_uart_tester__DOT__my_communication_uart__DOT____Vcellinp__m_lcd_double__data) 
+                             [(0xfU & (__VdfgRegularize_hd87f99a1_0_0 
                                        >> 4U))]));
-    if (top__DOT__my_vga_ctrl__DOT__h_valid) {
-        top__DOT__h_addr = (0x3ffU & ((IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__x_cnt) 
-                                      - (IData)(0x91U)));
-        vlSelf->VGA_BLANK_N = top__DOT__my_vga_ctrl__DOT__v_valid;
-    } else {
-        top__DOT__h_addr = 0U;
-        vlSelf->VGA_BLANK_N = 0U;
-    }
-    top__DOT____Vcellinp__my_vmem__v_addr = ((IData)(top__DOT__my_vga_ctrl__DOT__v_valid)
-                                              ? (0x1ffU 
-                                                 & ((IData)(vlSelf->top__DOT__my_vga_ctrl__DOT__y_cnt) 
-                                                    - (IData)(0x24U)))
-                                              : 0U);
-    vlSelf->VGA_R = (0xffU & (vlSelf->top__DOT__my_vmem__DOT__vga_mem
-                              [(((IData)(top__DOT__h_addr) 
-                                 << 9U) | (IData)(top__DOT____Vcellinp__my_vmem__v_addr))] 
-                              >> 0x10U));
-    vlSelf->VGA_G = (0xffU & (vlSelf->top__DOT__my_vmem__DOT__vga_mem
-                              [(((IData)(top__DOT__h_addr) 
-                                 << 9U) | (IData)(top__DOT____Vcellinp__my_vmem__v_addr))] 
-                              >> 8U));
-    vlSelf->VGA_B = (0xffU & vlSelf->top__DOT__my_vmem__DOT__vga_mem
-                     [(((IData)(top__DOT__h_addr) << 9U) 
-                       | (IData)(top__DOT____Vcellinp__my_vmem__v_addr))]);
 }
 
 VL_ATTR_COLD void Vtop___024root___eval_triggers__stl(Vtop___024root* vlSelf);
@@ -513,8 +505,11 @@ VL_ATTR_COLD void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__write_pointer = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__read_pointer = 0;
     vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__count = 0;
-    for (int __Vi0 = 0; __Vi0 < 524288; ++__Vi0) {
-        vlSelf->top__DOT__my_vmem__DOT__vga_mem[__Vi0] = 0;
+    for (int __Vi0 = 0; __Vi0 < 16; ++__Vi0) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display[__Vi0] = 0;
+    }
+    for (int __Vi0 = 0; __Vi0 < 16; ++__Vi0) {
+        vlSelf->top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display[__Vi0] = 0;
     }
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = 0;
     vlSelf->__Vtrigprevexpr___TOP__top__DOT__my_uart_tester__DOT____Vcellinp__my_communication_uart__rst_n__0 = 0;

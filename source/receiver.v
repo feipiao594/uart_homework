@@ -5,8 +5,7 @@ module receiver (
     input  wire       rx,        // 串行输入数据
     output reg  [7:0] out_data,  // 8 位并行输出数据
     output reg        rxBusy,    // 接收中标志
-    output reg        rxDone,    // 数据接收完成标志
-    output reg        right      //接收数据是否为正确数据
+    output reg        rxDone     // 数据接收完成标志
 );
 
   reg [9:0] shift_reg;  // 移位寄存器（包括起始位 + 8位数据 + 停止位）
@@ -30,13 +29,12 @@ module receiver (
 
   always @(posedge clk) begin
     if (!rst_n || !rxEn) begin
-      state    <= IDLE;
       shift_reg <= 10'b0;
       rxBusy   <= 1'b0;
       rxDone   <= 1'b0;
       bit_cnt  <= 0;
       out_data <= 8'b0;
-      right    <= 1'b0;  // 复位时数据无效
+      state    <= IDLE;
     end else begin
       case (state)
         // **等待起始位**
@@ -45,7 +43,6 @@ module receiver (
           rxBusy  <= 1'b0;
           bit_cnt <= 0;
           state   <= START;
-          right   <= 1'b0;
         end
 
         // **检测起始位是否有效**
@@ -70,10 +67,11 @@ module receiver (
         end
 
         // **验证停止位并输出数据**
-        STOP: if (baud_tick) begin
+        STOP:
+        if (baud_tick) begin
           if (rx == 1'b1) begin  // 停止位必须是 1
             out_data <= shift_reg[7:0];  // 提取数据位
-            // $display("[uart receiver] STOP, %x", shift_reg[7:0]);
+            $display("[uart receiver] STOP, %x", shift_reg[7:0]);
           end
           rxDone <= 1'b1;  // 接收完成信号
           rxBusy <= 1'b0;  // 释放忙信号

@@ -1,57 +1,6 @@
-./testbench/s_to_r.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/testbench/s_to_r.v
+F:/GITCLONE/uart_homework/source/utils/lcd_single.v {0 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/utils/lcd_single.v
 Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module s_to_r
-
-Top level modules:
-	s_to_r
-
-} {} {}} ./source/receiver.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/receiver.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module receiver
-
-Top level modules:
-	receiver
-
-} {} {}} ./testbench/receiver_tb.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/testbench/receiver_tb.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module receiver_tb
-
-Top level modules:
-	receiver_tb
-
-} {} {}} F:/GITCLONE/uart_homework/testbench/sender_tb.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/testbench/sender_tb.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module sender_tb
-
-Top level modules:
-	sender_tb
-
-} {} {}} F:/GITCLONE/uart_homework/source/sender.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/sender.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module sender
-
-Top level modules:
-	sender
-
-} {} {}} ./source/utils/parallel_to_serial.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/utils/parallel_to_serial.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module parallel_to_serial
-
-Top level modules:
-	parallel_to_serial
-
-} {} {}} ./source/utils/baudrate_generator.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/source/utils/baudrate_generator.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module baudrate_generator
-
-Top level modules:
-	baudrate_generator
-
-} {} {}} ./testbench/baudrate_generator_tb.v {1 {vlog -work work -vopt -stats=none F:/GITCLONE/uart_homework/testbench/baudrate_generator_tb.v
-Model Technology ModelSim SE-64 vlog 10.5 Compiler 2016.02 Feb 13 2016
--- Compiling module baudrate_generator_tb
-
-Top level modules:
-	baudrate_generator_tb
+-- Compiling module lcd_single
+** Error (suppressible): (vlog-2997) F:/GITCLONE/uart_homework/source/utils/lcd_single.v(24): Cannot assign a packed type 'reg[127:0]' to an unpacked type 'reg[7:0] $[15:0]'.
 
 } {} {}}

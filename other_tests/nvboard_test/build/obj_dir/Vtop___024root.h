@@ -120,7 +120,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
         VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__sender_buffer__DOT__memory;
         VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__receiver_buffer__DOT__memory;
         VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__parser_buffer__DOT__memory;
-        VlUnpacked<IData/*23:0*/, 524288> top__DOT__my_vmem__DOT__vga_mem;
+        VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display;
+        VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display;
     };
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<1> __VicoTriggered;
@@ -129,16 +130,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop___024root final : public VerilatedModule
 
     // INTERNAL VARIABLES
     Vtop__Syms* const vlSymsp;
-
-    // PARAMETERS
-    static constexpr VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__high_lcd_single__DOT__hex_display = {{
-        0xfcU, 0x60U, 0xdaU, 0xf2U, 0x66U, 0xb6U, 0xbeU, 0xe0U,
-        0xfeU, 0xf6U, 0xeeU, 0x3eU, 0x9cU, 0x7aU, 0x9eU, 0x8eU
-    }};
-    static constexpr VlUnpacked<CData/*7:0*/, 16> top__DOT__my_uart_tester__DOT__my_communication_uart__DOT__m_lcd_double__DOT__low_lcd_single__DOT__hex_display = {{
-        0xfcU, 0x60U, 0xdaU, 0xf2U, 0x66U, 0xb6U, 0xbeU, 0xe0U,
-        0xfeU, 0xf6U, 0xeeU, 0x3eU, 0x9cU, 0x7aU, 0x9eU, 0x8eU
-    }};
 
     // CONSTRUCTORS
     Vtop___024root(Vtop__Syms* symsp, const char* v__name);
