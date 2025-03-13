@@ -5,7 +5,7 @@ module parallel_to_serial #(
     input  wire               clk,          // 时钟信号
     input  wire               rst,          // 复位信号
     input  wire               load,         // 使能加载并行数据
-    input  reg  [P_WIDTH-1:0] parallel_in,  // 并行输入数据
+    input  wire  [P_WIDTH-1:0] parallel_in,  // 并行输入数据
     output reg  [S_WIDTH-1:0] serial_out,   // 串行输出数据
     output reg                valid,        // 并行数据有效信号
     output reg                busy          // 正在输出串行数据信号
@@ -20,6 +20,7 @@ module parallel_to_serial #(
       serial_out <= 0;
       valid <= 0;
       busy <= 0;
+      counter <= 0;
     end else if (load && !busy) begin
       $display("[p2s input] indata: %x", parallel_in);
       shift_reg <= parallel_in;

@@ -3,10 +3,10 @@ module parser (
     input wire rst_n,  // 复位信号
     input wire En,
     input wire [7:0] indata,
-    output reg [7:0] outdata,
+    output wire [7:0] outdata,
     output reg pBusy,
     output reg pDone,
-    output reg data_valid
+    output wire data_valid
 );
 
   // 状态机状态定义
@@ -23,7 +23,7 @@ module parser (
   reg [3:0] data_cnt;  // 记录接收数据的字节数
   reg [63:0] data_buf;
 
-  reg busy;
+  wire busy;
   reg ptsEn;
   parallel_to_serial #(
       .P_WIDTH(64),  // 并行输入数据位宽

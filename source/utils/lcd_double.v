@@ -1,7 +1,7 @@
 module lcd_double (
-    input reg [7:0] data,
-    input reg enable,
-    output reg [15:0] ports
+    input wire [7:0] data,
+    input wire enable,
+    output wire [15:0] ports
 );
 
   lcd_single high_lcd_single (

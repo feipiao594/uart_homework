@@ -7,7 +7,7 @@ module lcd_single (
   reg [7:0] hex_display[15:0];
 
   initial begin
-    $readmemh("./resource/mem.hex", hex_display, 0, 15);
+    $readmemh("C:/Workplace/user_files/homework/uart_homework/source/resource/mem.hex", hex_display, 0, 15);
   end
 
   assign ports = (enable == 1'b1 ? ~hex_display[single_byte] : 8'b11111111);

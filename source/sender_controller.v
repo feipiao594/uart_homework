@@ -7,9 +7,9 @@ module sender_controller (
     input  wire       s4,
     input  wire       s2,            // 确认发送
     input  wire       btn_en,
-    output reg  [7:0] send_data,     // 发送数据
+    output wire  [7:0] send_data,     // 发送数据
     output reg  [7:0] preview_data,  // 预览数据
-    output reg        data_valid,    // 数据有效信号
+    output wire        data_valid,    // 数据有效信号
     output wire       busy
 );
 

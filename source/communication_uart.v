@@ -125,7 +125,7 @@ module communication_uart (
 
   lcd_double m_lcd_double (
       .data(switch_sw ? (pf_empty ? 0 : receive_data) : preview_data),  // 数据
-      .enable(1'b1),  // 使能
+      .enable(rst_n),  // 使能
       .ports(seg)  // 输出端口
   );
 

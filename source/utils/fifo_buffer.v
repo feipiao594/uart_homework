@@ -27,7 +27,7 @@ module fifo_buffer #(
   // **状态信号**
   assign full  = (count == FULL_NUMBER);  // FIFO 是否已满
   assign empty = (count == 0);  // FIFO 是否为空
-
+  integer i;
   // **写入读取逻辑**
   always @(posedge clk) begin
     if (rst) begin
@@ -35,25 +35,28 @@ module fifo_buffer #(
       read_pointer <= 0;
       data_out <= 0;
       count <= 0;
+      for (i = 0; i < DEPTH; i = i + 1) begin
+        memory[i] <= {WIDTH{1'b0}};  // 将所有位置初始化为0
+      end
     end else begin
-      if (!empty) data_out <= memory[read_pointer];  // 默认读取数据，用rd表示已收到
-      if (wr_en && !full) begin
+      if (empty == 1'b0) data_out <= memory[read_pointer];  // 默认读取数据，用rd表示已收到
+      if (wr_en == 1'b1 && full == 1'b0) begin
         memory[write_pointer] <= data_in;  // 写入数据
         // $display("[buffer] write data: %x", data_in);
         write_pointer <= write_pointer + 1;  // 更新写指针
         count <= count + 1;
         // $display("[buffer] count: %d, empty: %d", count, empty);
-        if (empty) begin
+        if (empty == 1'b1) begin
           data_out <= data_in;
         end
       end
-      if (rd_en && !empty) begin
+      if (rd_en == 1'b1 && empty == 1'b0) begin
         // $display("[buffer] read data: %x, count: %d", memory[read_pointer], count);
         read_pointer <= read_pointer + 1;  // 更新读指针
-        if (empty) data_out <= memory[read_pointer+1];  // 默认读取数据，用rd表示已收到
+        if (empty == 1'b1) data_out <= memory[read_pointer+1];  // 默认读取数据，用rd表示已收到
         count <= count - 1;
       end
-      if (wr_en && rd_en && ~(full || empty)) begin
+      if (wr_en == 1'b1 && rd_en == 1'b1 && ~(full == 1'b1 || empty == 1'b1)) begin
         count <= count;
       end
     end
